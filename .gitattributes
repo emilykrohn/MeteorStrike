@@ -2,3 +2,5 @@
 * text=auto eol=lf
 *.cs text eol=crlf
 .gitignore eol=crlf
+*.uxml eol=crlf
+*.xsd eol=crlf
