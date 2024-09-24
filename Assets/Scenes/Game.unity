@@ -275,11 +275,11 @@ GameObject:
   - component: {fileID: 1277238134}
   - component: {fileID: 1277238133}
   - component: {fileID: 1277238135}
-  - component: {fileID: 1277238136}
   - component: {fileID: 1277238137}
+  - component: {fileID: 1277238136}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb81aa8b2cbe884a8569b561e8e026c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDown: 0.5
+  coolDown: 1
   spawnRadius: 4
   innerRadius: 3
   meteor: {fileID: 8447841841024638471, guid: 155f986115cb3524591694593cf3b2ae, type: 3}
