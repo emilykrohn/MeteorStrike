@@ -497,11 +497,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meteor: {fileID: 8447841841024638471, guid: 155f986115cb3524591694593cf3b2ae, type: 3}
   meteorCoolDown: 2
-  meteorSpawnRadius: 12
-  meteorInnerRadius: 10
+  meteorSpawnRadius: 10
+  meteorInnerRadius: 8
   star: {fileID: 5002295005032699545, guid: 5f44857cb6346ff4d9602d444e8f7bd2, type: 3}
   starCoolDown: 2
-  starSpawnRadius: 8
+  starSpawnRadius: 6
   starInnerRadius: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
