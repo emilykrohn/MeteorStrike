@@ -22,8 +22,8 @@ public class MeteorSpawner : MonoBehaviour
         {
             Vector2 currentPos = transform.position;
             GameObject currentMeteor = Instantiate(meteor);
-            float xPos = Random.Range(-spawnRadius - currentPos.x, spawnRadius + currentPos.x);
-            float yPos = Random.Range(-spawnRadius - currentPos.y, spawnRadius + currentPos.y);
+            float xPos = Random.Range(-spawnRadius + currentPos.x, spawnRadius + currentPos.x);
+            float yPos = Random.Range(-spawnRadius + currentPos.y, spawnRadius + currentPos.y);
             if (xPos > innerRadius || xPos < -innerRadius ||
                 yPos > innerRadius || yPos < -innerRadius)
             {
