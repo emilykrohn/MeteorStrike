@@ -22,18 +22,27 @@ public class Shoot : MonoBehaviour
     }
     void Update()
     {
+        /* Add the time between frames to the timer so the timer will be the amount of time that has passed since the scene started or
+           since the last reset when a bullet is shot */
         shootTimer += Time.deltaTime;
+
         if (shootTimer > shootCooldown)
         {
             if (playerInput.actions["Shooting"].IsPressed())
             {
+                /* If the amount of time on the timer is greater than the amount of time the cooldown has
+                   then spawn a bullet */
                 Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 
+                // Get the Vector pointing to the mouse from the player position
                 Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
                 direction.Normalize();
 
+                // Have the bullet's direction facing the same direction as the player
                 bullet.direction = direction;
             }
+            
+            // Reset the timer
             shootTimer = 0;
         }
     }
