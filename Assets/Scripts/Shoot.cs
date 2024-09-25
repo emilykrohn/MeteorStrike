@@ -9,6 +9,9 @@ public class Shoot : MonoBehaviour
     PlayerInput playerInput;
     [SerializeField]
     Bullet bulletPrefab;
+    [SerializeField]
+    float shootCooldown = 1f;
+    float shootTimer = 0f;
 
     void Start()
     {
@@ -16,14 +19,19 @@ public class Shoot : MonoBehaviour
     }
     void Update()
     {
-        if (playerInput.actions["Shooting"].IsPressed())
+        shootTimer += Time.deltaTime;
+        if (shootTimer > shootCooldown)
         {
-            Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            if (playerInput.actions["Shooting"].IsPressed())
+            {
+                Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 
-            Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            direction.Normalize();
+                Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+                direction.Normalize();
 
-            bullet.direction = direction;
+                bullet.direction = direction;
+            }
+            shootTimer = 0;
         }
     }
 }
