@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 316036696}
   - component: {fileID: 316036695}
   - component: {fileID: 316036697}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left
   m_TagString: Border
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 576412975}
   - component: {fileID: 576412974}
   - component: {fileID: 576412976}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top
   m_TagString: Border
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 874227859}
   - component: {fileID: 874227858}
   - component: {fileID: 874227860}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bottom
   m_TagString: Border
   m_Icon: {fileID: 0}
@@ -747,11 +747,12 @@ GameObject:
   - component: {fileID: 1277238132}
   - component: {fileID: 1277238131}
   - component: {fileID: 1277238134}
-  - component: {fileID: 1277238135}
-  - component: {fileID: 1277238137}
-  - component: {fileID: 1277238136}
   - component: {fileID: 1277238138}
-  m_Layer: 0
+  - component: {fileID: 1277238136}
+  - component: {fileID: 1277238137}
+  - component: {fileID: 1277238135}
+  - component: {fileID: 1277238139}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -907,6 +908,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: fdc8d2cb-c75f-4334-8c87-84be7a51154a
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/d,/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fe1c39d1-2814-411e-bd86-786f1f448302
+    m_ActionName: Player/Shoot[/Keyboard/space,/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard & Mouse
   m_DefaultActionMap: Player
@@ -967,6 +972,19 @@ CircleCollider2D:
   m_Offset: {x: 0.019932628, y: 0}
   serializedVersion: 2
   m_Radius: 0.30707127
+--- !u!114 &1277238139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277238130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe915974c8bf8042b54c6a9f08ce4e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1606143650944069051, guid: 3eea683259a83ee4d80501a02dba2e9d, type: 3}
 --- !u!1 &1694563830
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,9 +994,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1694563831}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Border
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1014,7 +1032,7 @@ GameObject:
   - component: {fileID: 1885072104}
   - component: {fileID: 1885072103}
   - component: {fileID: 1885072105}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right
   m_TagString: Border
   m_Icon: {fileID: 0}
