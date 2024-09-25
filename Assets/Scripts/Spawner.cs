@@ -33,6 +33,7 @@ public class Spawner : MonoBehaviour
         bool validLocation = false;
         while(!validLocation)
         {
+            // Uses the current player position so the game object spawns relative to the player
             Vector2 currentPos = transform.position;
 
             // Finds random x and y position inside of the spawn radius
