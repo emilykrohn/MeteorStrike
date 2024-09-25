@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 // CPSC 386 Example04 SceneSwitcher.cs (LoadScene())
 // https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html
 // https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html
-// https://docs.unity3d.com/ScriptReference/UIElements.Label.html (Label text)
 public class GameUI : MonoBehaviour
 {
     Label pointsLabel;

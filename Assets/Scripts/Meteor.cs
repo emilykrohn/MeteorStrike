@@ -5,6 +5,7 @@ using UnityEngine;
 
 // CPSC 386 Example03 Player.cs (OnTriggerEnter2D)
 // CPSC 386 Example04 Enemy.cs (FindObjectOfType)
+// https://docs.unity3d.com/ScriptReference/Component.CompareTag.html (CompareTag)
 // https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html
 // CPSC 386 Example02 Timer1.cs
 public class Meteor : MonoBehaviour

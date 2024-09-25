@@ -4,6 +4,7 @@ using UnityEngine;
 
 // https://docs.unity3d.com/ScriptReference/Rigidbody-velocity.html (velocity)
 // CPSC 396 Example03 Player.cs (OnTriggerEnter2D)
+// https://docs.unity3d.com/ScriptReference/Component.CompareTag.html (CompareTag)
 public class Bullet : MonoBehaviour
 {
     // Spawner script changes direction when bullet is spawned

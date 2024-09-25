@@ -5,7 +5,6 @@ using UnityEngine;
 // https://stackoverflow.com/questions/30310847/gameobject-findobjectoftype-vs-getcomponent (FindGameObjectWithTag)
 // https://docs.unity3d.com/ScriptReference/Object.Destroy.html (Destroy)
 // https://docs.unity3d.com/ScriptReference/Vector3.Normalize.html (Normalize)
-// CPSC 386 Example03 Player.cs (OnTriggerEnter2D)
 // CPSC 386 Example04 Enemy.cs (Updating current position)
 public class MeteorMovement : MonoBehaviour
 {
