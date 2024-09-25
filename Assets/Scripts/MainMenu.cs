@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
 // https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html
-
+// https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html
 public class MainMenu : MonoBehaviour
 {
     private Button startButton;

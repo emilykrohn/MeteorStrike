@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     // https://docs.unity3d.com/Packages/com.unity.inputsystem@1.7/manual/Actions.html#polling-actions
+    // https://discussions.unity.com/t/lookat-2d-equivalent/88118
     // CS386 Example02 InputExample.cs
     [SerializeField]
     PlayerInput playerInput;
@@ -32,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
             moveDirection = Vector2.zero;
         }
 
-        // https://discussions.unity.com/t/lookat-2d-equivalent/88118
         Vector3 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         direction.Normalize();
         float rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

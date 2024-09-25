@@ -4,6 +4,8 @@ using UnityEngine;
 
 // https://stackoverflow.com/questions/30310847/gameobject-findobjectoftype-vs-getcomponent
 // https://docs.unity3d.com/ScriptReference/Object.Destroy.html
+// https://docs.unity3d.com/ScriptReference/Vector3.Normalize.html
+// https://docs.unity3d.com/ScriptReference/Object.Destroy.html
 public class MeteorMovement : MonoBehaviour
 {
     GameObject player;

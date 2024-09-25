@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
+// https://docs.unity3d.com/Packages/com.unity.inputsystem@1.7/manual/Actions.html#polling-actions
+// https://discussions.unity.com/t/lookat-2d-equivalent/88118
+// CPSC 386 Example02 Timer1.cs
 public class Shoot : MonoBehaviour
 {
     PlayerInput playerInput;

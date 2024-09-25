@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
+// CPSC 386 Example02 Timer1.cs
+// CPSC 386 Example04 EnemyManager.cs (Spawn Radius)
 public class Spawner : MonoBehaviour
 {
     float meteorTimer = 0;

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// CPSC 386 Example03 Player.cs (OnTriggerEnter2D)
+// https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html
+
 public class Meteor : MonoBehaviour
 {
     GameUI UI;
