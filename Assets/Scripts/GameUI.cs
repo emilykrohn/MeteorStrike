@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class GameUI : MonoBehaviour
 {
@@ -27,6 +28,13 @@ public class GameUI : MonoBehaviour
     public void DecrementLives()
     {
         lives--;
-        livesLabel.text = "Lives: " + lives.ToString();
+        if (lives < 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+        else
+        {
+            livesLabel.text = "Lives: " + lives.ToString();
+        }
     }
 }
