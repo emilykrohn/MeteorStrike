@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
             // Make sure that time doesn't become a higher number than 1
             time = Mathf.Min(time, 1);
         } else {
-            time -= Time.deltaTime;
+            time -= 0.05f - Time.deltaTime;
             // Make sure that time doesn't become a lower number than 0
             time = Mathf.Max(time, 0);
         }
