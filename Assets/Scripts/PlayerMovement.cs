@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,13 +11,24 @@ public class PlayerMovement : MonoBehaviour
     // https://discussions.unity.com/t/lookat-2d-equivalent/88118
     // CPSC386 Example02 InputExample.cs (New Unity Input System)
     // CPSC386 Example04 Player.cs (MovePosition)
+
+    // https://docs.unity3d.com/ScriptReference/Mathf.Lerp.html (Lerp)
+    // https://docs.unity3d.com/ScriptReference/Mathf.Min.html (Min)
+
     [SerializeField]
     PlayerInput playerInput;
     InputAction moveAction;
+
+    // Lerp
+    float moveSpeedMinimum = 0f;
     [SerializeField]
-    float moveSpeed = 10.0f;
+    float moveSpeedMaximum = 10f;
+    float time = 0f;
+
     Vector2 moveDirection = Vector2.zero;
+    Vector2 previousMoveDirection = Vector2.zero;
     Rigidbody2D rb;
+
     void Start()
     {
         // Get player rigidbody 2d to use physics movement
@@ -35,6 +47,9 @@ public class PlayerMovement : MonoBehaviour
         {
             // If one of the WASD keys is being pressed get the direction
             moveDirection = moveAction.ReadValue<Vector2>();
+
+            // Used when player is moving, if moveDirection is zero then can keep going in direction but slow down 
+            previousMoveDirection = moveDirection;
         } else {
             // else set the direction to zero so the player stops moving
             moveDirection = Vector2.zero;
@@ -53,12 +68,34 @@ public class PlayerMovement : MonoBehaviour
            the player need to rotate to face the mouse */
         float rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rotation - 90);
-        
     }
 
     void FixedUpdate()
     {
+        /* At 0, moveSpeed is moveSpeedMinimum and at 1, moveSpeed is moveSpeedMaximum
+           As time increases or decreases by decimal values, it moves smoothly between the two moveSpeed min and max valeus */
+        float moveSpeed = Mathf.Lerp(moveSpeedMinimum, moveSpeedMaximum, time);
+
+        // If the player is moving
+        if (moveDirection != Vector2.zero)
+        {
+            time += Time.deltaTime;
+            // Make sure that time doesn't become a higher number than 1
+            time = Mathf.Min(time, 1);
+        } else {
+            time -= Time.deltaTime;
+            // Make sure that time doesn't become a lower number than 0
+            time = Mathf.Max(time, 0);
+        }
+
         // Use physics to move the player
-        rb.MovePosition(rb.position + (moveDirection * moveSpeed * Time.deltaTime));
+        if (moveDirection == Vector2.zero)
+        {
+            /* If use moveDirection in thise case then it would immediately become 0 because it would multiply by 0
+               it should equal zero when the move speed is zero and not the direction */
+            rb.MovePosition(rb.position + (previousMoveDirection * moveSpeed * Time.deltaTime));
+        } else {
+            rb.MovePosition(rb.position + (moveDirection * moveSpeed * Time.deltaTime));
+        }
     }
 }
