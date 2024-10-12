@@ -10,8 +10,11 @@ using UnityEngine.SceneManagement;
 // https://docs.unity3d.com/ScriptReference/Application.Quit.html
 public class MainMenu : MonoBehaviour
 {
-    private Button startButton;
+    [SerializeField] PlayerSaveData playerSaveData;
+    private Button newGameButton;
+    private Button loadGameButton;
     private Button quitButton;
+    public bool isLoadGame = true;
 
     private void OnEnable()
     {
@@ -19,30 +22,39 @@ public class MainMenu : MonoBehaviour
         var UIDoc = GetComponent<UIDocument>();
 
         // Find buttons in UI Document as Buttons
-        startButton = UIDoc.rootVisualElement.Q("StartButton") as Button;
+        newGameButton = UIDoc.rootVisualElement.Q("NewGameButton") as Button;
+        loadGameButton = UIDoc.rootVisualElement.Q("LoadGameButton") as Button;
         quitButton = UIDoc.rootVisualElement.Q("QuitButton") as Button;
 
         // Call start / quit game functions when buttons are clicked
-        startButton.RegisterCallback<ClickEvent>(StartGame);
+        newGameButton.RegisterCallback<ClickEvent>(NewGame);
+        loadGameButton.RegisterCallback<ClickEvent>(LoadGame);
         quitButton.RegisterCallback<ClickEvent>(QuitGame);
     }
     
     private void OnDisable()
     {
         // When UI Disabled, unregister callbacks
-        startButton.UnregisterCallback<ClickEvent>(StartGame);
+        loadGameButton.UnregisterCallback<ClickEvent>(LoadGame);
         quitButton.UnregisterCallback<ClickEvent>(QuitGame);
     }
 
-    private void StartGame(ClickEvent evt)
+    private void LoadGame(ClickEvent evt)
     {
         // When start button clicked, load Game scene
         SceneManager.LoadScene("Game");
+        playerSaveData.isLoadGame = true;
     }
 
     private void QuitGame(ClickEvent evt)
     {
         // When quit button clicked, close application
         Application.Quit();
+    }
+
+    private void NewGame(ClickEvent evt)
+    {
+        SceneManager.LoadScene("Game");
+        playerSaveData.isLoadGame = false;
     }
 }

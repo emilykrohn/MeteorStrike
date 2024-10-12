@@ -14,26 +14,18 @@ public class PauseMenu : MonoBehaviour
     UIDocument UIDoc;
     Button resumeButton;
     Button settingsButton;
-    Button MainMenuButton;
+    Button saveButton;
+    Button mainMenuButton;
+
+    PlayerData playerData;
 
     // Start is called before the first frame update
     void Start()
     {
         UIDoc = GetComponent<UIDocument>();
+        playerData = FindAnyObjectByType<PlayerData>();
     }
 
-    void ResumeGame(ClickEvent evt)
-    {
-        UIDoc.enabled = false;
-        Time.timeScale = 1;
-    }
-
-    void LoadMainMenu(ClickEvent evt)
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -42,9 +34,29 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0;
             resumeButton = UIDoc.rootVisualElement.Q("ResumeButton") as Button;
             settingsButton = UIDoc.rootVisualElement.Q("SettingsButton") as Button;
-            MainMenuButton = UIDoc.rootVisualElement.Q("MainMenuButton") as Button;
+            saveButton = UIDoc.rootVisualElement.Q("SaveButton") as Button;
+            mainMenuButton = UIDoc.rootVisualElement.Q("MainMenuButton") as Button;
+
             resumeButton.RegisterCallback<ClickEvent>(ResumeGame);
-            MainMenuButton.RegisterCallback<ClickEvent>(LoadMainMenu);
+            saveButton.RegisterCallback<ClickEvent>(SaveGame);
+            mainMenuButton.RegisterCallback<ClickEvent>(LoadMainMenu);
         }
+    }
+
+    void ResumeGame(ClickEvent evt)
+    {
+        UIDoc.enabled = false;
+        Time.timeScale = 1;
+    }
+
+    void SaveGame(ClickEvent evt)
+    {
+        playerData.SaveStats();
+    }
+
+    void LoadMainMenu(ClickEvent evt)
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
     }
 }

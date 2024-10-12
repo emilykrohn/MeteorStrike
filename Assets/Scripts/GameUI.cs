@@ -9,19 +9,22 @@ using UnityEngine.SceneManagement;
 // https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html
 public class GameUI : MonoBehaviour
 {
+    PlayerData playerData;
     Label pointsLabel;
     int points = 0;
     Label livesLabel;
-    int lives = 3;
 
     private void OnEnable()
     {
+        playerData = FindAnyObjectByType<PlayerData>();
         // Find UI Document on game object
         var UIDoc = GetComponent<UIDocument>();
 
         // Find Points and Lives Labels in UI Document as Labels
         pointsLabel = UIDoc.rootVisualElement.Q("Points") as Label;
         livesLabel = UIDoc.rootVisualElement.Q("Lives") as Label;
+        
+        livesLabel.text = "Lives: " + playerData.lives.ToString();
     }
 
     // Function called in Stars Script
@@ -36,16 +39,16 @@ public class GameUI : MonoBehaviour
     public void DecrementLives()
     {
         // Decrease current lives by 1
-        lives--;
+        playerData.lives--;
         // Check if lives is less than zero, if so then load game over scene
-        if (lives < 0)
+        if (playerData.lives < 0)
         {
             SceneManager.LoadScene("GameOver");
         }
         else
         {
             // otherwise, update lives label to new lives count
-            livesLabel.text = "Lives: " + lives.ToString();
+            livesLabel.text = "Lives: " + playerData.lives.ToString();
         }
     }
 }

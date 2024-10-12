@@ -275,6 +275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8938ac7b8122c4ebae79a93b8f3b7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSaveData: {fileID: 11400000, guid: 6ac10f8547ef5894aaf3a6ba2bf6db34, type: 2}
+  isLoadGame: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
