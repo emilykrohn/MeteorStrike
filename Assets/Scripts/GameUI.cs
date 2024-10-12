@@ -5,8 +5,8 @@ using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
 // CPSC 386 Example04 SceneSwitcher.cs (LoadScene())
-// https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html
-// https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html
+// https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html (LoadScene())
+// https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html (How to make the UI Buttons functional)
 public class GameUI : MonoBehaviour
 {
     [SerializeField] PlayerSaveData playerSaveData;
@@ -18,11 +18,13 @@ public class GameUI : MonoBehaviour
     private void OnEnable()
     {
         playerData = FindAnyObjectByType<PlayerData>();
-        
+
+        // If the player choose the load game option, it loads that game stats from the PlayerSaveData
         if (playerSaveData.isLoadGame)
         {
             playerData.LoadStats();
         }
+        // Else the game data is reset
         else
         {
             playerData.ResetStats();
@@ -35,10 +37,13 @@ public class GameUI : MonoBehaviour
         pointsLabel = UIDoc.rootVisualElement.Q("Points") as Label;
         livesLabel = UIDoc.rootVisualElement.Q("Lives") as Label;
         
+        // Update the livesLabel text when GameUI is enabled
         livesLabel.text = "Lives: " + playerData.lives.ToString();
     }
 
-    // Function called in Stars Script
+    /// <summary>
+    /// This increases the player points by 1 and updates the GameUI pointsLabel. Function called in Stars Script
+    /// </summary>
     public void IncrementPoints()
     {
         // Increase current points by 1 and update points label to this new number
@@ -46,7 +51,9 @@ public class GameUI : MonoBehaviour
         pointsLabel.text = "Points: " + points.ToString();
     }
 
-    // Function called in Meteor Script
+    /// <summary>
+    /// This decreases the player lives by 1 and updates the GameUI livesLabel. If the player lives reaches below 0, the GameOver Scene is Loaded. Function called in Meteor Script
+    /// </summary>
     public void DecrementLives()
     {
         // Decrease current lives by 1

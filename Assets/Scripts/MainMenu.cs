@@ -5,9 +5,9 @@ using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
 // CPSC 386 Example04 SceneSwitcher.cs (LoadScene())
-// https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html
-// https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html
-// https://docs.unity3d.com/ScriptReference/Application.Quit.html
+// https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html (LoadScene())
+// https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html (How to make the UI Buttons functional)
+// https://docs.unity3d.com/ScriptReference/Application.Quit.html (Close Application)
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] PlayerSaveData playerSaveData;
@@ -39,6 +39,10 @@ public class MainMenu : MonoBehaviour
         quitButton.UnregisterCallback<ClickEvent>(QuitGame);
     }
 
+    /// <summary>
+    /// Loads the Game scene and the PlayerSaveData isLoadGame is set to true so the player stats will be reset in the PlayerData function
+    /// </summary>
+    /// <param name="evt"></param>
     private void LoadGame(ClickEvent evt)
     {
         // When start button clicked, load Game scene
@@ -46,12 +50,20 @@ public class MainMenu : MonoBehaviour
         playerSaveData.isLoadGame = true;
     }
 
+    /// <summary>
+    /// Closes the Game Application
+    /// </summary>
+    /// <param name="evt"></param>
     private void QuitGame(ClickEvent evt)
     {
         // When quit button clicked, close application
         Application.Quit();
     }
 
+    /// <summary>
+    /// Loads the Game scene and the PlayerSaveData isLoadGame is set to false so the player stats will be reset in the PlayerData function
+    /// </summary>
+    /// <param name="evt"></param>
     private void NewGame(ClickEvent evt)
     {
         SceneManager.LoadScene("Game");

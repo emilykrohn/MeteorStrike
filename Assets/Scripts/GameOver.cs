@@ -5,9 +5,9 @@ using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
 // CPSC 386 Example04 SceneSwitcher.cs (LoadScene())
-// https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html
-// https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html
-// https://docs.unity3d.com/ScriptReference/Application.Quit.html
+// https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html (LoadScene())
+// https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html (How to make the Buttons functional)
+// https://docs.unity3d.com/ScriptReference/Application.Quit.html (Close the Application)
 public class GameOver : MonoBehaviour
 {
     private Button restartButton;
@@ -35,14 +35,22 @@ public class GameOver : MonoBehaviour
         quitButton.UnregisterCallback<ClickEvent>(QuitGame);
     }
 
+    /// <summary>
+    /// Loads the Game Scene and sets the PlayerSaveData isLoadGame to false so the PlayerSaveData is loaded into the game
+    /// </summary>
+    /// <param name="evt"></param>
     private void RestartGame(ClickEvent evt)
     {
         // Loads Game Scene
         SceneManager.LoadScene("Game");
-
+        // If isLoadGame is false, then the GameUI Script Resets the Player stats
         playerSaveData.isLoadGame = false;
     }
 
+    /// <summary>
+    /// Closes the game application
+    /// </summary>
+    /// <param name="evt"></param>
     private void QuitGame(ClickEvent evt)
     {
         // Closes Application
