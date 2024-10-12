@@ -12,6 +12,7 @@ public class GameOver : MonoBehaviour
 {
     private Button restartButton;
     private Button quitButton;
+    [SerializeField] PlayerSaveData playerSaveData;
 
     private void OnEnable()
     {
@@ -38,6 +39,8 @@ public class GameOver : MonoBehaviour
     {
         // Loads Game Scene
         SceneManager.LoadScene("Game");
+
+        playerSaveData.isLoadGame = false;
     }
 
     private void QuitGame(ClickEvent evt)

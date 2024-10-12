@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 // https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html
 public class GameUI : MonoBehaviour
 {
+    [SerializeField] PlayerSaveData playerSaveData;
     PlayerData playerData;
     Label pointsLabel;
     int points = 0;
@@ -17,6 +18,16 @@ public class GameUI : MonoBehaviour
     private void OnEnable()
     {
         playerData = FindAnyObjectByType<PlayerData>();
+        
+        if (playerSaveData.isLoadGame)
+        {
+            playerData.LoadStats();
+        }
+        else
+        {
+            playerData.ResetStats();
+        }
+
         // Find UI Document on game object
         var UIDoc = GetComponent<UIDocument>();
 

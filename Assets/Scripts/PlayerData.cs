@@ -9,18 +9,6 @@ public class PlayerData : MonoBehaviour
 
     public int lives;
 
-    void Start()
-    {
-        if (SaveData.isLoadGame)
-        {
-            LoadStats();
-        }
-        else
-        {
-            ResetStats();
-        }
-    }
-
     public void ResetStats()
     {
         lives = maxLives;
