@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     // https://docs.unity3d.com/ScriptReference/Mathf.Lerp.html (Lerp)
     // https://docs.unity3d.com/ScriptReference/Mathf.Min.html (Min)
 
+    // https://www.youtube.com/watch?app=desktop&v=7NMsVub5NZM (Limits the player rigidbody velocity maginutude from being more than the maximum move speed)
+
     [SerializeField]
     PlayerInput playerInput;
     InputAction moveAction;
@@ -91,11 +93,18 @@ public class PlayerMovement : MonoBehaviour
         // Use physics to move the player
         if (moveDirection == Vector2.zero)
         {
-            /* If use moveDirection in thise case then it would immediately become 0 because it would multiply by 0
+            /* If use moveDirection in this case then it would immediately become 0 because it would multiply by 0
                it should equal zero when the move speed is zero and not the direction */
             rb.MovePosition(rb.position + (previousMoveDirection * moveSpeed * Time.deltaTime));
         } else {
             rb.MovePosition(rb.position + (moveDirection * moveSpeed * Time.deltaTime));
+        }
+
+        // rb.velocity.maginitude is the speed of the player
+        if (rb.velocity.magnitude > moveSpeedMaximum)
+        {
+            // Makes sure the velicity doesn't go past the move speed maximum
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, moveSpeedMaximum);
         }
     }
 }

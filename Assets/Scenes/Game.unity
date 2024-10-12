@@ -942,7 +942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 1277238136}
-  moveSpeedMaximum: 10
+  moveSpeedMaximum: 5
 --- !u!114 &1277238136
 MonoBehaviour:
   m_ObjectHideFlags: 0
