@@ -32,11 +32,11 @@ public class GameUI : MonoBehaviour
         // Find UI Document on game object
         var UIDoc = GetComponent<UIDocument>();
 
-        // Find Points and Lives Labels in UI Document as Labels
+        // Find Points and Lives Labels in UI Document as a Label or ProgressBar
         pointsLabel = UIDoc.rootVisualElement.Q("Points") as Label;
         healthBar = UIDoc.rootVisualElement.Q("HealthBar") as ProgressBar;
         
-        // Update the livesLabel text when GameUI is enabled
+        // Update the healthBar value when GameUI is enabled
         healthBar.value = playerSaveData.health;
     }
 
@@ -45,7 +45,7 @@ public class GameUI : MonoBehaviour
     /// </summary>
     public void IncreasePoints(int new_points)
     {
-        // Increase current points by 1 and update points label to this new number
+        // Increase current points by the new_points amount and update points label to this new number
         playerSaveData.points += new_points;
         pointsLabel.text = "Points: " + playerSaveData.points.ToString();
     }
@@ -55,16 +55,17 @@ public class GameUI : MonoBehaviour
     /// </summary>
     public void DecreaseHealth(int damage)
     {
-        // Decrease current lives by 1
+        // Decrease current lives by damage amount
         playerData.current_health -= damage;
-        // Check if lives is less than zero, if so then load game over scene
-        if (playerData.current_health < 0)
+
+        // Check if lives is less than or equal to zero, if so then load game over scene
+        if (playerData.current_health <= 0)
         {
             SceneManager.LoadScene("GameOver");
         }
         else
         {
-            // otherwise, update lives label to new lives count
+            // otherwise, update lives label to new health amount
             healthBar.value = playerData.current_health;
         }
     }
