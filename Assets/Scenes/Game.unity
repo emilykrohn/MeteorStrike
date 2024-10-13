@@ -1075,8 +1075,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SaveData: {fileID: 11400000, guid: 6ac10f8547ef5894aaf3a6ba2bf6db34, type: 2}
-  maxLives: 3
-  lives: 0
+  maxHealth: 100
+  current_health: 0
+  current_points: 0
 --- !u!1 &1694563830
 GameObject:
   m_ObjectHideFlags: 0
