@@ -40,10 +40,11 @@ public class Shoot : MonoBehaviour
 
                 // Have the bullet's direction facing the same direction as the player
                 bullet.direction = direction;
+                
+                // Reset the timer
+                shootTimer = 0;
             }
             
-            // Reset the timer
-            shootTimer = 0;
         }
     }
 }

@@ -22,13 +22,7 @@ public class Bullet : MonoBehaviour
     {
         /* The rate of change of the bullet is equal to the normalized direction from the 
         player position and the mouse position multiplied by the move speed */
-        rb.velocity = direction * moveSpeed;
-
-        // Prevents the bullet's velocity magnitude from being more that the moveSpeed
-        if (rb.velocity.magnitude > moveSpeed)
-        {
-            rb.velocity = Vector2.ClampMagnitude(rb.velocity, moveSpeed);
-        }
+        rb.velocity = direction.normalized * moveSpeed;
     }
     private void OnTriggerEnter2D(Collider2D other) {
         // When the bullet hits a meteor or border, this current instance of the bullet gets destroyed
