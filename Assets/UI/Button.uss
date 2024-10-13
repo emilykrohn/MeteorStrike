@@ -1,0 +1,7 @@
+.button {
+    width: 20%;
+    height: 12%;
+    font-size: 25px;
+    margin-bottom: 15px;
+    background-image: url("project://database/Assets/Assets/UI_Assets/button_rectangle_depth.png?fileID=21300000&guid=d855520e1cb2b7d4890017310c0a35f5&type=3#button_rectangle_depth");
+}
