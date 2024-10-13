@@ -10,18 +10,20 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     [SerializeField] PlayerSaveData SaveData;
-    [SerializeField] int maxLives = 3;
+    [SerializeField] int maxHealth = 100;
 
     // Current lives the player has durring the game
-    public int lives;
+    public int current_health;
+    public int current_points;
 
     /// <summary>
     /// Resets the player's stats in the PlayerSaveData Scriptable Object
     /// </summary>
     public void ResetStats()
     {
-        SaveData.lives = maxLives;
-        lives = maxLives;
+        SaveData.health = maxHealth;
+        current_health = maxHealth;
+        current_points = 0;
     }
 
     /// <summary>
@@ -29,7 +31,8 @@ public class PlayerData : MonoBehaviour
     /// </summary>
     public void LoadStats()
     {
-        lives = SaveData.lives;
+        current_health = SaveData.health;
+        current_points = SaveData.points;
     }
 
     /// <summary>
@@ -37,6 +40,7 @@ public class PlayerData : MonoBehaviour
     /// </summary>
     public void SaveStats()
     {
-        SaveData.lives = lives;
+        SaveData.health = current_health;
+        SaveData.points = current_points;
     }
 }

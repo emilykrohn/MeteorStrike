@@ -4,3 +4,4 @@
 .gitignore eol=crlf
 *.uxml eol=crlf
 *.xsd eol=crlf
+*.uss eol=crlf

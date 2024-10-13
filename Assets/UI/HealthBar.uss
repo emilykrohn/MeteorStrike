@@ -1,0 +1,12 @@
+/* https://docs.unity3d.com/Manual/UIE-uxml-element-ProgressBar.html
+   https://www.youtube.com/watch?v=NHRFP6qDskM&t=270s */
+   
+.unity-progress-bar__container {
+    min-height: 50px;
+    height: 55px;
+}
+
+.unity-progress-bar__progress {
+    height: 48px;
+    margin: 0;
+}

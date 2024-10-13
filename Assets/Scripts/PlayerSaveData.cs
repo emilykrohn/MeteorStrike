@@ -8,6 +8,7 @@ using UnityEngine;
 // PlayerSaveData Scriptable Object is used to save and load player data
 public class PlayerSaveData : ScriptableObject
 {
-    public int lives = 3;
+    public int health = 100;
+    public int points = 0;
     public bool isLoadGame = false;
 }

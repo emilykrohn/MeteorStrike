@@ -35,7 +35,7 @@ public class Meteor : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Call function in the game UI to decrease player lives and update UI
-            UI.DecrementLives();
+            UI.DecreaseHealth(10);
             Destroy(gameObject);
         }
 

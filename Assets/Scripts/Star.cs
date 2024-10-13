@@ -31,7 +31,7 @@ public class Star : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Use function from the GameUI script
-            UI.IncrementPoints();
+            UI.IncreasePoints(1);
             Destroy(gameObject);
         }
     }

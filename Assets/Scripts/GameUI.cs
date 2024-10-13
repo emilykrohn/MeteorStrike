@@ -12,8 +12,7 @@ public class GameUI : MonoBehaviour
     [SerializeField] PlayerSaveData playerSaveData;
     PlayerData playerData;
     Label pointsLabel;
-    int points = 0;
-    Label livesLabel;
+    ProgressBar healthBar;
 
     private void OnEnable()
     {
@@ -35,38 +34,38 @@ public class GameUI : MonoBehaviour
 
         // Find Points and Lives Labels in UI Document as Labels
         pointsLabel = UIDoc.rootVisualElement.Q("Points") as Label;
-        livesLabel = UIDoc.rootVisualElement.Q("Lives") as Label;
+        healthBar = UIDoc.rootVisualElement.Q("HealthBar") as ProgressBar;
         
         // Update the livesLabel text when GameUI is enabled
-        livesLabel.text = "Lives: " + playerData.lives.ToString();
+        healthBar.value = playerSaveData.health;
     }
 
     /// <summary>
     /// This increases the player points by 1 and updates the GameUI pointsLabel. Function called in Stars Script
     /// </summary>
-    public void IncrementPoints()
+    public void IncreasePoints(int new_points)
     {
         // Increase current points by 1 and update points label to this new number
-        points++;
-        pointsLabel.text = "Points: " + points.ToString();
+        playerSaveData.points += new_points;
+        pointsLabel.text = "Points: " + playerSaveData.points.ToString();
     }
 
     /// <summary>
     /// This decreases the player lives by 1 and updates the GameUI livesLabel. If the player lives reaches below 0, the GameOver Scene is Loaded. Function called in Meteor Script
     /// </summary>
-    public void DecrementLives()
+    public void DecreaseHealth(int damage)
     {
         // Decrease current lives by 1
-        playerData.lives--;
+        playerData.current_health -= damage;
         // Check if lives is less than zero, if so then load game over scene
-        if (playerData.lives < 0)
+        if (playerData.current_health < 0)
         {
             SceneManager.LoadScene("GameOver");
         }
         else
         {
             // otherwise, update lives label to new lives count
-            livesLabel.text = "Lives: " + playerData.lives.ToString();
+            healthBar.value = playerData.current_health;
         }
     }
 }
