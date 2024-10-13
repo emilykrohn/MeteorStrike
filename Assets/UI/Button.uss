@@ -4,11 +4,14 @@
     font-size: 25px;
     margin-bottom: 15px;
     background-image: url("project://database/Assets/Assets/UI_Assets/button_rectangle_depth.png?fileID=21300000&guid=d855520e1cb2b7d4890017310c0a35f5&type=3#button_rectangle_depth");
+    -unity-font: url("project://database/Assets/Assets/Kenney%20Future%20Narrow.ttf?fileID=12800000&guid=281bda30d407f4447b5d86fedcfa5916&type=3#Kenney Future Narrow");
+    -unity-font-definition: initial;
 }
 
 .window {
     width: 80%;
     height: 60%;
+    background-image: url("project://database/Assets/Assets/UI_Assets/panel_glass_tab_blade.png?fileID=21300000&guid=8e80100b7ecb3794186bc52c7f998abc&type=3#panel_glass_tab_blade");
 }
 
 .label {
@@ -18,4 +21,13 @@
     -unity-font: url("project://database/Assets/Assets/Kenney%20Future%20Narrow.ttf?fileID=12800000&guid=281bda30d407f4447b5d86fedcfa5916&type=3#Kenney Future Narrow");
     -unity-font-definition: initial;
     -unity-text-align: upper-center;
+}
+
+.slider {
+    font-size: 40px;
+    -unity-font: url("project://database/Assets/Assets/Kenney%20Future%20Narrow.ttf?fileID=12800000&guid=281bda30d407f4447b5d86fedcfa5916&type=3#Kenney Future Narrow");
+    -unity-font-definition: initial;
+    align-self: center;
+    align-items: center;
+    width: 60%;
 }

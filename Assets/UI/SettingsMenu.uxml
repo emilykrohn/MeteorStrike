@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Button.uss?fileID=7433441132597879392&amp;guid=f4693e23235b49b4eb5500043ece6266&amp;type=3#Button" />
+    <ui:VisualElement style="flex-grow: 1; -unity-text-align: upper-left; align-items: center; background-image: url(&quot;project://database/Assets/Assets/UI_Assets/button_square_header_blade_rectangle-sheet.png?fileID=21300000&amp;guid=9703d3135b950654c82857daae081dc3&amp;type=3#button_square_header_blade_rectangle-sheet&quot;);">
+        <ui:VisualElement style="flex-grow: 1;" />
+        <ui:VisualElement class="window" style="flex-grow: 1; -unity-text-align: upper-center; align-items: stretch; align-self: auto; justify-content: center;">
+            <ui:VisualElement style="flex-grow: 1; justify-content: center; height: 50%;">
+                <ui:VisualElement style="flex-grow: 1;" />
+                <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+                    <ui:Label tabindex="-1" text="Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" class="label" style="padding-top: 40px; padding-bottom: 40px;" />
+                    <ui:Slider label="Music Volume" high-value="100" name="MusicVolume" class="slider" />
+                    <ui:Slider label="SFX Volume" high-value="100" name="SFXVolume" class="slider" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row; height: 5%; justify-content: center; align-self: auto; align-items: center;">
+                <ui:Button text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button" class="button" style="width: 25%; height: 40%;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1;" />
+    </ui:VisualElement>
+</ui:UXML>
