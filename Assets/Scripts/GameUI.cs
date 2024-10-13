@@ -38,6 +38,7 @@ public class GameUI : MonoBehaviour
         
         // Update the healthBar value when GameUI is enabled
         healthBar.value = playerSaveData.health;
+        healthBar.title = "Health: " + healthBar.value.ToString();
     }
 
     /// <summary>
@@ -65,8 +66,9 @@ public class GameUI : MonoBehaviour
         }
         else
         {
-            // otherwise, update lives label to new health amount
+            // otherwise, update healthBar to new health amount
             healthBar.value = playerData.current_health;
+            healthBar.title = "Health: " + healthBar.value.ToString();
         }
     }
 }
