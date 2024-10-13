@@ -39,6 +39,8 @@ public class GameUI : MonoBehaviour
         // Update the healthBar value when GameUI is enabled
         healthBar.value = playerSaveData.health;
         healthBar.title = "Health: " + healthBar.value.ToString();
+
+        pointsLabel.text = "Points: " + playerSaveData.points.ToString();
     }
 
     /// <summary>
@@ -47,8 +49,8 @@ public class GameUI : MonoBehaviour
     public void IncreasePoints(int new_points)
     {
         // Increase current points by the new_points amount and update points label to this new number
-        playerSaveData.points += new_points;
-        pointsLabel.text = "Points: " + playerSaveData.points.ToString();
+        playerData.current_points += new_points;
+        pointsLabel.text = "Points: " + playerData.current_points.ToString();
     }
 
     /// <summary>

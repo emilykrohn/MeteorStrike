@@ -23,6 +23,7 @@ public class PlayerData : MonoBehaviour
     {
         SaveData.health = maxHealth;
         current_health = maxHealth;
+        SaveData.points = 0;
         current_points = 0;
     }
 
