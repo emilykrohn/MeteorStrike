@@ -5,6 +5,7 @@ using UnityEngine;
 // https://docs.unity3d.com/ScriptReference/Rigidbody-velocity.html (velocity)
 // CPSC 396 Example03 Player.cs (OnTriggerEnter2D)
 // https://docs.unity3d.com/ScriptReference/Component.CompareTag.html (CompareTag)
+// https://www.youtube.com/watch?app=desktop&v=7NMsVub5NZM (Limits the bullet rigidbody velocity maginutude from being more than the maximum move speed)
 public class Bullet : MonoBehaviour
 {
     // Spawner script changes direction when bullet is spawned
@@ -22,6 +23,12 @@ public class Bullet : MonoBehaviour
         /* The rate of change of the bullet is equal to the normalized direction from the 
         player position and the mouse position multiplied by the move speed */
         rb.velocity = direction * moveSpeed;
+
+        // Prevents the bullet's velocity magnitude from being more that the moveSpeed
+        if (rb.velocity.magnitude > moveSpeed)
+        {
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, moveSpeed);
+        }
     }
     private void OnTriggerEnter2D(Collider2D other) {
         // When the bullet hits a meteor or border, this current instance of the bullet gets destroyed
