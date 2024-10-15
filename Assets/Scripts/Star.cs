@@ -35,7 +35,7 @@ public class Star : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player"))
         {
-            AudioSource.PlayClipAtPoint(collectSound, transform.position, playerSaveData.sfxVolume);
+            AudioSource.PlayClipAtPoint(collectSound, transform.position, playerSaveData.sfxVolume / 100);
             // Use function from the GameUI script
             UI.IncreasePoints(1);
             Destroy(gameObject);

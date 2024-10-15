@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
     {
         // Get the Rigidbody2D of this current instance of the bullet to be able to use physics movement
         rb = GetComponent<Rigidbody2D>();
-        AudioSource.PlayClipAtPoint(shootSound, transform.position, playerSaveData.sfxVolume);
+        AudioSource.PlayClipAtPoint(shootSound, transform.position, playerSaveData.sfxVolume / 100);
     }
     void FixedUpdate()
     {

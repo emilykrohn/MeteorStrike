@@ -7,6 +7,7 @@ TagManager:
   - Border
   - Meteor
   - Bullet
+  - ButtonSound
   layers:
   - Default
   - TransparentFX

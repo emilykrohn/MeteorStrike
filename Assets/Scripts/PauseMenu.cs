@@ -26,6 +26,8 @@ public class PauseMenu : MonoBehaviour
     PlayerData playerData;
     GameObject player;
 
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,8 @@ public class PauseMenu : MonoBehaviour
 
         // Find player game object with tag
         player = GameObject.FindGameObjectWithTag("Player");
+        
+        audioSource = GameObject.FindGameObjectWithTag("ButtonSound").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -73,6 +77,8 @@ public class PauseMenu : MonoBehaviour
     /// <param name="evt"></param>
     void ResumeGame(ClickEvent evt)
     {
+        audioSource.volume = saveData.sfxVolume / 100;
+        audioSource.Play();
         UIDoc.enabled = false;
         Time.timeScale = 1;
     }
@@ -83,6 +89,8 @@ public class PauseMenu : MonoBehaviour
     /// <param name="evt"></param>
     void SaveGame(ClickEvent evt)
     {
+        audioSource.volume = saveData.sfxVolume / 100;
+        audioSource.Play();
         playerData.SaveStats();
     }
 
@@ -92,6 +100,8 @@ public class PauseMenu : MonoBehaviour
     /// <param name="evt"></param>
     void LoadMainMenu(ClickEvent evt)
     {
+        audioSource.volume = saveData.sfxVolume / 100;
+        audioSource.Play();
         Time.timeScale = 1;
         // Keep track of where back button in settings goes to
         saveData.previousScene = "MainMenu";
@@ -104,6 +114,8 @@ public class PauseMenu : MonoBehaviour
     /// <param name="evt"></param>
     void SettingsMenu(ClickEvent evt)
     {
+        audioSource.volume = saveData.sfxVolume / 100;
+        audioSource.Play();
         DontDestroyOnLoad(player);
         SceneManager.LoadScene("SettingsMenu");
     }
@@ -114,6 +126,8 @@ public class PauseMenu : MonoBehaviour
     /// <param name="evt"></param>
     void QuitGame(ClickEvent evt)
     {
+        audioSource.volume = saveData.sfxVolume / 100;
+        audioSource.Play();
         // When quit button clicked, close application
         Application.Quit();
     }
