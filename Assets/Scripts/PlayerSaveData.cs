@@ -13,4 +13,6 @@ public class PlayerSaveData : ScriptableObject
     public bool isLoadGame = false;
     public int musicVolume = 100;
     public int sfxVolume = 100;
+    public string previousScene = "MainMenu";
+    public bool isSettingMenuOpened = false;
 }

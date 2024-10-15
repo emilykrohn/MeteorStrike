@@ -47,6 +47,7 @@ public class MainMenu : MonoBehaviour
     {
         // When start button clicked, load Game scene
         SceneManager.LoadScene("Game");
+        playerSaveData.previousScene = "Game";
         playerSaveData.isLoadGame = true;
     }
 
@@ -67,6 +68,8 @@ public class MainMenu : MonoBehaviour
     private void NewGame(ClickEvent evt)
     {
         SceneManager.LoadScene("Game");
+        // Keep track of where back button in settings goes to
+        playerSaveData.previousScene = "Game";
         playerSaveData.isLoadGame = false;
     }
 }

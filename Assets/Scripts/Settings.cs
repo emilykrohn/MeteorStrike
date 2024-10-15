@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 // https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html (How to make the UI buttons functional)
-// https://docs.unity3d.com/2018.2/Documentation/ScriptReference/UI.Slider.html (Slider)
 // https://stackoverflow.com/questions/52406605/how-can-i-access-an-objects-components-from-a-different-scene (DontDestroyOnLoad and FindObjectWithTag)
 
 // https://docs.unity3d.com/Packages/com.unity.ui@1.0/api/UnityEngine.UIElements.ChangeEvent-1.html (ChangeEvent<T>)
 // https://docs.unity3d.com/ScriptReference/UIElements.ChangeEvent_1.html (newValue)
 // https://docs.unity3d.com/Manual/UIE-Change-Events.html (ChangeEvent<T>, Example 2)
+
+// https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html (How to use the LoadScene function)
 
 public class Settings : MonoBehaviour
 {
@@ -20,19 +22,23 @@ public class Settings : MonoBehaviour
 
     Slider musicVolumeSlider;
     Slider sfxVolumeSlider;
+    Button backButton;
 
+    GameObject player;
     PlayerData saveData;
 
     void OnEnable()
     {
         // Get Player Data Script to update the music and sfx volume
-        saveData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        saveData = player.GetComponent<PlayerData>();
 
         UIDoc = GetComponent<UIDocument>();
 
         // Find the sliders in the UIDoc
         musicVolumeSlider = UIDoc.rootVisualElement.Q("MusicVolume") as Slider;
         sfxVolumeSlider = UIDoc.rootVisualElement.Q("SFXVolume") as Slider;
+        backButton = UIDoc.rootVisualElement.Q("BackButton") as Button;
 
         // Set the initial value that has been saved in the playerSaveData scriptable object
         musicVolumeSlider.value = playerSaveData.musicVolume;
@@ -49,5 +55,14 @@ public class Settings : MonoBehaviour
         {
             saveData.UpdateSFXVolume((int)evt.newValue);
         });
+
+        backButton.RegisterCallback<ClickEvent>(LoadPreviousScene);
+    }
+
+    void LoadPreviousScene(ClickEvent evt)
+    {
+        Destroy(player);
+        playerSaveData.isSettingMenuOpened = true;
+        SceneManager.LoadScene(playerSaveData.previousScene);
     }
 }

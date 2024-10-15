@@ -13,6 +13,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    [SerializeField]
+    PlayerSaveData saveData;
     UIDocument UIDoc;
     Button resumeButton;
     Button settingsButton;
@@ -38,8 +40,9 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         // Is true when the ESC key is pressed
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || saveData.isSettingMenuOpened)
         {
+            saveData.isSettingMenuOpened = false;
             // Makes the UIDoc visiable and the user can interact with it
             UIDoc.enabled = true;
 
@@ -95,6 +98,8 @@ public class PauseMenu : MonoBehaviour
     void LoadMainMenu(ClickEvent evt)
     {
         Time.timeScale = 1;
+        // Keep track of where back button in settings goes to
+        saveData.previousScene = "MainMenu";
         SceneManager.LoadScene("MainMenu");
     }
 
