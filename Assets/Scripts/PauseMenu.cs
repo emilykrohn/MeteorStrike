@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 // https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html (How to use the LoadScene function)
 // https://stackoverflow.com/questions/30310847/gameobject-findobjectoftype-vs-getcomponent (FindGameObjectWithTag)
 // https://stackoverflow.com/questions/52406605/how-can-i-access-an-objects-components-from-a-different-scene (DontDestroyOnLoad and FindObjectWithTag)
+// https://docs.unity3d.com/ScriptReference/Application.Quit.html (Close Application)
 
 public class PauseMenu : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PauseMenu : MonoBehaviour
     Button settingsButton;
     Button saveButton;
     Button mainMenuButton;
+    Button quitButton;
 
     PlayerData playerData;
     GameObject player;
@@ -54,12 +56,14 @@ public class PauseMenu : MonoBehaviour
             settingsButton = UIDoc.rootVisualElement.Q("SettingsButton") as Button;
             saveButton = UIDoc.rootVisualElement.Q("SaveButton") as Button;
             mainMenuButton = UIDoc.rootVisualElement.Q("MainMenuButton") as Button;
+            quitButton = UIDoc.rootVisualElement.Q("QuitButton") as Button;
 
             // When the Button is clicked, the function is called
             resumeButton.RegisterCallback<ClickEvent>(ResumeGame);
             settingsButton.RegisterCallback<ClickEvent>(SettingsMenu);
             saveButton.RegisterCallback<ClickEvent>(SaveGame);
             mainMenuButton.RegisterCallback<ClickEvent>(LoadMainMenu);
+            quitButton.RegisterCallback<ClickEvent>(QuitGame);
         }
     }
     
@@ -111,5 +115,15 @@ public class PauseMenu : MonoBehaviour
     {
         DontDestroyOnLoad(player);
         SceneManager.LoadScene("SettingsMenu");
+    }
+
+    /// <summary>
+    /// Closes the game
+    /// </summary>
+    /// <param name="evt"></param>
+    void QuitGame(ClickEvent evt)
+    {
+        // When quit button clicked, close application
+        Application.Quit();
     }
 }
