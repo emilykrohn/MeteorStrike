@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 // https://gamedevbeginner.com/the-right-way-to-pause-the-game-in-unity/ (Pause game when menu open)
 // https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html (How to make the UI buttons functional)
 // https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html (How to use the LoadScene function)
+// https://stackoverflow.com/questions/30310847/gameobject-findobjectoftype-vs-getcomponent (FindGameObjectWithTag)
+// https://stackoverflow.com/questions/52406605/how-can-i-access-an-objects-components-from-a-different-scene (DontDestroyOnLoad and FindObjectWithTag)
 
 public class PauseMenu : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class PauseMenu : MonoBehaviour
     Button mainMenuButton;
 
     PlayerData playerData;
+    GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,9 @@ public class PauseMenu : MonoBehaviour
 
         // Finds the game object that is the PlayerData type in the scene
         playerData = FindAnyObjectByType<PlayerData>();
+
+        // Find player game object with tag
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -48,9 +54,19 @@ public class PauseMenu : MonoBehaviour
 
             // When the Button is clicked, the function is called
             resumeButton.RegisterCallback<ClickEvent>(ResumeGame);
+            settingsButton.RegisterCallback<ClickEvent>(SettingsMenu);
             saveButton.RegisterCallback<ClickEvent>(SaveGame);
             mainMenuButton.RegisterCallback<ClickEvent>(LoadMainMenu);
         }
+    }
+    
+    private void OnDisable()
+    {
+        // When UI Disabled, unregister callbacks
+        resumeButton.UnregisterCallback<ClickEvent>(ResumeGame);
+        settingsButton.UnregisterCallback<ClickEvent>(SettingsMenu);
+        saveButton.UnregisterCallback<ClickEvent>(SaveGame);
+        mainMenuButton.UnregisterCallback<ClickEvent>(LoadMainMenu);
     }
 
     /// <summary>
@@ -80,5 +96,11 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    void SettingsMenu(ClickEvent evt)
+    {
+        DontDestroyOnLoad(player);
+        SceneManager.LoadScene("SettingsMenu");
     }
 }

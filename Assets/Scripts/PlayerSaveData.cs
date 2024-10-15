@@ -11,4 +11,6 @@ public class PlayerSaveData : ScriptableObject
     public int health = 100;
     public int points = 0;
     public bool isLoadGame = false;
+    public int musicVolume = 100;
+    public int sfxVolume = 100;
 }

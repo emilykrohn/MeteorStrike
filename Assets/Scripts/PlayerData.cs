@@ -44,4 +44,22 @@ public class PlayerData : MonoBehaviour
         SaveData.health = current_health;
         SaveData.points = current_points;
     }
+
+    /// <summary>
+    /// Updates the PlayerSaveData SFX volume value
+    /// </summary>
+    /// <param name="value">SFX Volume Percentage</param>
+    public void UpdateSFXVolume(int value)
+    {
+        SaveData.sfxVolume = value;
+    }
+
+    /// <summary>
+    /// Updates the PlayerSave Data Music volume value
+    /// </summary>
+    /// <param name="value">Music Volume Percentage</param>
+    public void UpdateMusicVolume(int value)
+    {
+        SaveData.musicVolume = value;
+    }
 }
