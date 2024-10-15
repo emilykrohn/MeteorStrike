@@ -67,15 +67,6 @@ public class PauseMenu : MonoBehaviour
         }
     }
     
-    private void OnDisable()
-    {
-        // When UI Disabled, unregister callbacks
-        resumeButton.UnregisterCallback<ClickEvent>(ResumeGame);
-        settingsButton.UnregisterCallback<ClickEvent>(SettingsMenu);
-        saveButton.UnregisterCallback<ClickEvent>(SaveGame);
-        mainMenuButton.UnregisterCallback<ClickEvent>(LoadMainMenu);
-    }
-
     /// <summary>
     /// Disables the Pause Screen UI and lets time pass in the scene
     /// </summary>

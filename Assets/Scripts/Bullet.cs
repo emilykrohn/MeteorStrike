@@ -6,17 +6,23 @@ using UnityEngine;
 // CPSC 396 Example03 Player.cs (OnTriggerEnter2D)
 // https://docs.unity3d.com/ScriptReference/Component.CompareTag.html (CompareTag)
 // https://www.youtube.com/watch?app=desktop&v=7NMsVub5NZM (Limits the bullet rigidbody velocity maginutude from being more than the maximum move speed)
+// https://discussions.unity.com/t/volume-of-audio-clip-is-too-loud/135791 (Audio Clip)
 public class Bullet : MonoBehaviour
 {
     // Spawner script changes direction when bullet is spawned
     public Vector2 direction = Vector2.zero;
     [SerializeField]
     float moveSpeed = 3f;
+    [SerializeField]
+    AudioClip shootSound;
+    [SerializeField]
+    PlayerSaveData playerSaveData;
     Rigidbody2D rb;
     void Start()
     {
         // Get the Rigidbody2D of this current instance of the bullet to be able to use physics movement
         rb = GetComponent<Rigidbody2D>();
+        AudioSource.PlayClipAtPoint(shootSound, transform.position, playerSaveData.sfxVolume);
     }
     void FixedUpdate()
     {

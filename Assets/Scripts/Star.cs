@@ -7,11 +7,16 @@ using UnityEngine;
 // CPSC 386 Example04 Enemy.cs (FindObjectOfType)
 // https://docs.unity3d.com/ScriptReference/Component.CompareTag.html (CompareTag)
 // CPSC 386 Example02 Timer1.cs
+// https://discussions.unity.com/t/volume-of-audio-clip-is-too-loud/135791 (Audio Clip)
 public class Star : MonoBehaviour
 {
     float timer = 0;
     float delay = 10;
     GameUI UI;
+    [SerializeField]
+    AudioClip collectSound;
+    [SerializeField]
+    PlayerSaveData playerSaveData;
 
     void Start()
     {
@@ -30,6 +35,7 @@ public class Star : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player"))
         {
+            AudioSource.PlayClipAtPoint(collectSound, transform.position, playerSaveData.sfxVolume);
             // Use function from the GameUI script
             UI.IncreasePoints(1);
             Destroy(gameObject);

@@ -10,6 +10,10 @@ using UnityEngine;
 // CPSC 386 Example02 Timer1.cs
 public class Meteor : MonoBehaviour
 {
+    [SerializeField]
+    AudioClip hitSound;
+    [SerializeField]
+    PlayerSaveData playerSaveData;
     float timer = 0;
     [SerializeField]
     float delay = 5f;
@@ -36,11 +40,13 @@ public class Meteor : MonoBehaviour
         {
             // Call function in the game UI to decrease player lives and update UI
             UI.DecreaseHealth(10);
+            AudioSource.PlayClipAtPoint(hitSound, transform.position, playerSaveData.sfxVolume);
             Destroy(gameObject);
         }
 
         if (other.CompareTag("Bullet"))
         {
+            AudioSource.PlayClipAtPoint(hitSound, transform.position, playerSaveData.sfxVolume);
             // Destroy this instance of a meteor
             Destroy(gameObject);
         }
