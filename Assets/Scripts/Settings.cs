@@ -25,21 +25,26 @@ public class Settings : MonoBehaviour
 
     void OnEnable()
     {
+        // Get Player Data Script to update the music and sfx volume
         saveData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
 
         UIDoc = GetComponent<UIDocument>();
 
+        // Find the sliders in the UIDoc
         musicVolumeSlider = UIDoc.rootVisualElement.Q("MusicVolume") as Slider;
         sfxVolumeSlider = UIDoc.rootVisualElement.Q("SFXVolume") as Slider;
 
+        // Set the initial value that has been saved in the playerSaveData scriptable object
         musicVolumeSlider.value = playerSaveData.musicVolume;
         sfxVolumeSlider.value = playerSaveData.sfxVolume;
 
+        // When the slider value changes, it calls the UpdateMusicVolume function
         musicVolumeSlider.RegisterValueChangedCallback((evt) => 
         {
             saveData.UpdateMusicVolume((int)evt.newValue);
         });
 
+        // When the slider value changes, it call the UpdateSFXVolume function
         sfxVolumeSlider.RegisterValueChangedCallback((evt) =>
         {
             saveData.UpdateSFXVolume((int)evt.newValue);

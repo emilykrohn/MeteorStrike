@@ -98,6 +98,10 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    /// <summary>
+    /// Prevents the player from being destroyed so Settings Scene can use the Player Data Script, then Loads Settings Menu Scene
+    /// </summary>
+    /// <param name="evt"></param>
     void SettingsMenu(ClickEvent evt)
     {
         DontDestroyOnLoad(player);
