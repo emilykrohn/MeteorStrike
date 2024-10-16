@@ -24,8 +24,6 @@ public class PauseMenu : MonoBehaviour
     Button quitButton;
 
     PlayerData playerData;
-    GameObject player;
-
     AudioSource audioSource;
 
     // Start is called before the first frame update
@@ -37,9 +35,6 @@ public class PauseMenu : MonoBehaviour
         // Finds the game object that is the PlayerData type in the scene
         playerData = FindAnyObjectByType<PlayerData>();
 
-        // Find player game object with tag
-        player = GameObject.FindGameObjectWithTag("Player");
-        
         audioSource = GameObject.FindGameObjectWithTag("ButtonSound").GetComponent<AudioSource>();
     }
 
@@ -116,7 +111,6 @@ public class PauseMenu : MonoBehaviour
     {
         audioSource.volume = saveData.sfxVolume / 100;
         audioSource.Play();
-        DontDestroyOnLoad(player);
         SceneManager.LoadScene("SettingsMenu");
     }
 

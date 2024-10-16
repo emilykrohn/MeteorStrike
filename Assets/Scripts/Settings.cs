@@ -26,11 +26,13 @@ public class Settings : MonoBehaviour
 
     GameObject player;
     PlayerData saveData;
-    AudioSource audioSource;
+    AudioSource buttonAudioSource;
+    AudioSource music;
 
     void OnEnable()
     {
-        audioSource = GameObject.FindGameObjectWithTag("ButtonSound").GetComponent<AudioSource>();
+        buttonAudioSource = GameObject.FindGameObjectWithTag("ButtonSound").GetComponent<AudioSource>();
+        music = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
 
         // Get Player Data Script to update the music and sfx volume
         player = GameObject.FindGameObjectWithTag("Player");
@@ -64,8 +66,10 @@ public class Settings : MonoBehaviour
 
     void LoadPreviousScene(ClickEvent evt)
     {
-        audioSource.volume = playerSaveData.sfxVolume / 100;
-        audioSource.Play();
+        buttonAudioSource.volume = playerSaveData.sfxVolume / 100;
+        buttonAudioSource.Play();
+        music.volume = playerSaveData.musicVolume / 100;
+        music.Play();
         Destroy(player);
         playerSaveData.isSettingMenuOpened = true;
         SceneManager.LoadScene(playerSaveData.previousScene);
