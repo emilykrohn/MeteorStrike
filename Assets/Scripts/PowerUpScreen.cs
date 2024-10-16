@@ -58,8 +58,15 @@ public class PowerUpScreen : MonoBehaviour
             button2 = UIDoc.rootVisualElement.Q("PowerUpButton2") as Button;
             button3 = UIDoc.rootVisualElement.Q("PowerUpButton3") as Button;
 
-            buttonList.Add(button1);
-            button1.RegisterCallback<ClickEvent>(Button1);
+            if (playerData.current_health < 100)
+            {
+                buttonList.Add(button1);
+                button1.RegisterCallback<ClickEvent>(Button1);
+            }
+            else
+            {
+                button1.text = "Max Health";
+            }
             if(tempList.Contains("Speed"))
             {
                 buttonList.Add(button2);
@@ -88,28 +95,27 @@ public class PowerUpScreen : MonoBehaviour
 
     void Button1(ClickEvent evt)
     {
-        PowerUpButton(0);
+        PowerUpButton("Heal", button1);
     }
 
     void Button2(ClickEvent evt)
     {
-        PowerUpButton(1);
+        PowerUpButton("Speed", button2);
     }
 
     void Button3(ClickEvent evt)
     {
-        PowerUpButton(2);
+        PowerUpButton("Fire Rate", button3);
     }
 
-    void PowerUpButton(int index)
+    void PowerUpButton(string powerUp, Button button)
     {
-        string currentPowerUp = tempList[index];
-        buttonList[index].text = currentPowerUp;
-        if(currentPowerUp == powerUps[0])
+        button.text = powerUp;
+        if(powerUp == "Health")
         {
             playerData.HealPowerUp();
         }
-        else if(currentPowerUp == powerUps[1])
+        else if(powerUp == "Speed")
         {
             if (playerData.current_speed >= 12)
             {
@@ -120,7 +126,7 @@ public class PowerUpScreen : MonoBehaviour
                 playerData.SpeedPowerUp();
             }
         }
-        else if (currentPowerUp == powerUps[2])
+        else if (powerUp == "Fire Rate")
         {
             if (!playerData.FireRatePowerUp())
             {
