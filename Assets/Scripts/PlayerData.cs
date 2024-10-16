@@ -11,6 +11,9 @@ public class PlayerData : MonoBehaviour
 {
     [SerializeField] PlayerSaveData SaveData;
     [SerializeField] int maxHealth = 100;
+    [SerializeField] int healthPowerUpAmount = 10;
+
+    GameUI gameUI;
 
     // Current lives the player has during the game
     public int current_health;
@@ -19,6 +22,11 @@ public class PlayerData : MonoBehaviour
     public int current_speed;
     public float current_fire_rate;
     public bool current_has_max_power_ups;
+
+    void Start()
+    {
+        gameUI = FindObjectOfType<GameUI>();
+    }
 
     /// <summary>
     /// Resets the player's stats in the PlayerSaveData Scriptable Object
@@ -91,7 +99,7 @@ public class PlayerData : MonoBehaviour
 
     public void HealPowerUp()
     {
-        current_health += 10;
+        gameUI.IncreaseHealth(healthPowerUpAmount);
     }
 
     public void SpeedPowerUp()
@@ -101,6 +109,6 @@ public class PlayerData : MonoBehaviour
 
     public void FireRatePowerUp()
     {
-        current_fire_rate -= 0.1f;
+        current_fire_rate -= 0.2f;
     }
 }

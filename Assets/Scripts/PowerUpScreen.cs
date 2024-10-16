@@ -44,7 +44,6 @@ public class PowerUpScreen : MonoBehaviour
             foreach(string powerUp in powerUps)
             {
                 tempList.Add(powerUp);
-                Debug.Log(powerUp);
             }
 
             while(tempList.Count > powerUpDisplayCount)

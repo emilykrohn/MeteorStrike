@@ -97,4 +97,18 @@ public class GameUI : MonoBehaviour
             healthBar.title = "Health: " + healthBar.value.ToString();
         }
     }
+
+    public void IncreaseHealth(int health)
+    {
+        playerData.current_health += health;
+        if (playerData.current_health > 100)
+        {
+            playerData.current_health = 100;
+        }
+        else
+        {
+            healthBar.value = playerData.current_health;
+            healthBar.title = "Health: " + healthBar.value.ToString();
+        }
+    }
 }

@@ -11,8 +11,8 @@ public class PlayerSaveData : ScriptableObject
     public int health = 100;
     public int points = 0;
     public int pointsGoal = 20;
-    public int speed = 10;
-    public float fireRate = 0.4f;
+    public int speed = 5;
+    public float fireRate = 0.5f;
     public bool isLoadGame = false;
     public float musicVolume = 100;
     public float sfxVolume = 100;
