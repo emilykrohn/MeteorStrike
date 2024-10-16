@@ -1302,6 +1302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSaveData: {fileID: 11400000, guid: 6ac10f8547ef5894aaf3a6ba2bf6db34, type: 2}
+  levelUpSound: {fileID: 8300000, guid: fea0a30c003a8224b947ef37a003f093, type: 3}
 --- !u!1 &1550069832
 GameObject:
   m_ObjectHideFlags: 0

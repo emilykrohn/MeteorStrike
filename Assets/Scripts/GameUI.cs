@@ -12,6 +12,7 @@ using System;
 public class GameUI : MonoBehaviour
 {
     [SerializeField] PlayerSaveData playerSaveData;
+    [SerializeField] AudioClip levelUpSound;
     PlayerData playerData;
     ProgressBar pointsBar;
     ProgressBar healthBar;
@@ -48,6 +49,7 @@ public class GameUI : MonoBehaviour
 
     public void UpdatePointsGoal()
     {
+        AudioSource.PlayClipAtPoint(levelUpSound, transform.position, playerSaveData.sfxVolume / 100);
         playerSaveData.pointsGoal = (int)(0.25 * Math.Pow(playerData.current_level, 2) + 20);
         pointsBar.highValue = playerSaveData.pointsGoal;
         playerData.current_level++;

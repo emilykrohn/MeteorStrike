@@ -163,5 +163,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0}
   moveSpeed: 20
-  shootSound: {fileID: 8300000, guid: 32536853d71928947af2eb541dca080a, type: 3}
+  shootSound: {fileID: 8300000, guid: b08809f1d707af54baff890a7651fa68, type: 3}
   playerSaveData: {fileID: 11400000, guid: 6ac10f8547ef5894aaf3a6ba2bf6db34, type: 2}
