@@ -1303,6 +1303,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSaveData: {fileID: 11400000, guid: 6ac10f8547ef5894aaf3a6ba2bf6db34, type: 2}
   levelUpSound: {fileID: 8300000, guid: fea0a30c003a8224b947ef37a003f093, type: 3}
+--- !u!1 &1379122681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1379122683}
+  - component: {fileID: 1379122682}
+  - component: {fileID: 1379122684}
+  m_Layer: 0
+  m_Name: PowerUpUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1379122682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379122681}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: cc636849260a39f4797198cf67917141, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 4765480e8c9068e4b80d7505fc6ba95b, type: 3}
+  m_SortingOrder: 0
+--- !u!4 &1379122683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379122681}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.4213113, y: 0.0931785, z: -0.09467175}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1379122684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379122681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143c0476fed8bab4e8c4136452c961bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1550069832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,3 +1702,4 @@ SceneRoots:
   - {fileID: 717471558}
   - {fileID: 381009207}
   - {fileID: 1550069834}
+  - {fileID: 1379122683}

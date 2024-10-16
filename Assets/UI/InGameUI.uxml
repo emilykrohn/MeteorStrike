@@ -2,7 +2,9 @@
     <Style src="project://database/Assets/UI/HealthBar.uss?fileID=7433441132597879392&amp;guid=33b572c5452923f4885d374ee2a7e5ee&amp;type=3#HealthBar" />
     <ui:VisualElement style="flex-grow: 1; width: 100%; height: 100%; flex-direction: row; background-image: url(&quot;project://database/Assets/Assets/UI_Assets/GameUI.png?fileID=21300000&amp;guid=f4f8ee1f7a8f505429442a2b591e47ff&amp;type=3#GameUI&quot;);">
         <ui:ProgressBar value="0" title="Level:  0" name="PointsBar" style="width: 25%; height: 10%; justify-content: center; margin-left: 30px; font-size: 30px; -unity-font: url(&quot;project://database/Assets/Assets/Kenney%20Future%20Narrow.ttf?fileID=12800000&amp;guid=281bda30d407f4447b5d86fedcfa5916&amp;type=3#Kenney Future Narrow&quot;); -unity-font-definition: initial;" />
-        <ui:VisualElement style="flex-grow: 1; width: 50%; height: 8%; max-width: 45%;" />
+        <ui:VisualElement style="flex-grow: 1; width: 50%; height: 15%; max-width: 45%; justify-content: center;">
+            <ui:Label tabindex="-1" text="Max Power Ups" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" name="MaxPowerUpsLabel" style="-unity-text-align: upper-center; justify-content: center; align-items: center; align-self: stretch; font-size: 40px; -unity-font: url(&quot;project://database/Assets/Assets/Kenney%20Future%20Narrow.ttf?fileID=12800000&amp;guid=281bda30d407f4447b5d86fedcfa5916&amp;type=3#Kenney Future Narrow&quot;); -unity-font-definition: initial;" />
+        </ui:VisualElement>
         <ui:ProgressBar value="22" title="Health: 100" name="HealthBar" style="height: 10%; max-width: none; width: 25%; align-self: auto; align-items: stretch; justify-content: center; -unity-font: url(&quot;project://database/Assets/Assets/Kenney%20Future%20Narrow.ttf?fileID=12800000&amp;guid=281bda30d407f4447b5d86fedcfa5916&amp;type=3#Kenney Future Narrow&quot;); -unity-font-definition: initial; font-size: 30px; flex-direction: column; -unity-background-scale-mode: stretch-to-fill;" />
     </ui:VisualElement>
 </ui:UXML>

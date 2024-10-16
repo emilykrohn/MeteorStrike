@@ -10,15 +10,17 @@ using UnityEngine.InputSystem;
 public class Shoot : MonoBehaviour
 {
     PlayerInput playerInput;
+    PlayerData playerData;
     [SerializeField]
     Bullet bulletPrefab;
-    [SerializeField]
-    float shootCooldown = 1f;
+    float shootCooldown;
     float shootTimer = 0f;
 
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
+        playerData = GetComponent<PlayerData>();
+        shootCooldown = playerData.current_fire_rate;
     }
     void Update()
     {

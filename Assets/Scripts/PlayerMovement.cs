@@ -20,11 +20,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     PlayerInput playerInput;
     InputAction moveAction;
+    PlayerData playerData;
 
     // Lerp
     float moveSpeedMinimum = 0f;
-    [SerializeField]
-    float moveSpeedMaximum = 10f;
+    public float moveSpeedMaximum;
     float time = 0f;
 
     Vector2 moveDirection = Vector2.zero;
@@ -33,11 +33,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        playerData = GetComponent<PlayerData>();
         // Get player rigidbody 2d to use physics movement
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();        
 
         // Find movement action in player input component, this uses WASD
         moveAction = playerInput.actions.FindAction("Movement");
+
+        moveSpeedMaximum = playerData.current_speed;
 
         // Enable movement action
         moveAction.Enable();

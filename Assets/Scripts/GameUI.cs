@@ -13,13 +13,16 @@ public class GameUI : MonoBehaviour
 {
     [SerializeField] PlayerSaveData playerSaveData;
     [SerializeField] AudioClip levelUpSound;
+    PowerUpScreen powerUpScreen;
     PlayerData playerData;
     ProgressBar pointsBar;
     ProgressBar healthBar;
+    public Label maxPowerUpsLabel;
 
     private void OnEnable()
     {
         playerData = FindAnyObjectByType<PlayerData>();
+        powerUpScreen = FindAnyObjectByType<PowerUpScreen>();
 
         // If the player choose the load game option, it loads that game stats from the PlayerSaveData
         if (playerSaveData.isLoadGame)
@@ -45,6 +48,9 @@ public class GameUI : MonoBehaviour
         pointsBar.value = playerSaveData.points;
         pointsBar.title = "Level: " + playerSaveData.level.ToString();
         pointsBar.highValue = playerSaveData.pointsGoal;
+
+        maxPowerUpsLabel = UIDoc.rootVisualElement.Q("MaxPowerUpsLabel") as Label;
+        maxPowerUpsLabel.visible = false;
     }
 
     public void UpdatePointsGoal()
@@ -54,6 +60,7 @@ public class GameUI : MonoBehaviour
         pointsBar.highValue = playerSaveData.pointsGoal;
         playerData.current_level++;
         pointsBar.title = "Level: " + playerData.current_level.ToString();
+        powerUpScreen.EnablePowerUpScreen();
     }
 
     /// <summary>
