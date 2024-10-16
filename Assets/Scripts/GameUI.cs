@@ -11,7 +11,7 @@ public class GameUI : MonoBehaviour
 {
     [SerializeField] PlayerSaveData playerSaveData;
     PlayerData playerData;
-    Label pointsLabel;
+    ProgressBar pointsBar;
     ProgressBar healthBar;
 
     private void OnEnable()
@@ -33,14 +33,14 @@ public class GameUI : MonoBehaviour
         var UIDoc = GetComponent<UIDocument>();
 
         // Find Points and Lives Labels in UI Document as a Label or ProgressBar
-        pointsLabel = UIDoc.rootVisualElement.Q("Points") as Label;
+        pointsBar = UIDoc.rootVisualElement.Q("PointsBar") as ProgressBar;
         healthBar = UIDoc.rootVisualElement.Q("HealthBar") as ProgressBar;
         
         // Update the healthBar value when GameUI is enabled
         healthBar.value = playerSaveData.health;
         healthBar.title = "Health: " + healthBar.value.ToString();
-
-        pointsLabel.text = "Points: " + playerSaveData.points.ToString();
+        pointsBar.value = playerSaveData.points;
+        pointsBar.title = "Points: " + playerSaveData.points.ToString();
     }
 
     /// <summary>
@@ -50,7 +50,8 @@ public class GameUI : MonoBehaviour
     {
         // Increase current points by the new_points amount and update points label to this new number
         playerData.current_points += new_points;
-        pointsLabel.text = "Points: " + playerData.current_points.ToString();
+        pointsBar.value = playerData.current_points;
+        pointsBar.title = "Points: " + playerData.current_points.ToString();
     }
 
     /// <summary>
