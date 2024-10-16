@@ -107,8 +107,16 @@ public class PlayerData : MonoBehaviour
         current_speed += 2;
     }
 
-    public void FireRatePowerUp()
+    public bool FireRatePowerUp()
     {
-        current_fire_rate -= 0.2f;
+        if(current_fire_rate > 0.4)
+        {
+            current_fire_rate -= 0.2f;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

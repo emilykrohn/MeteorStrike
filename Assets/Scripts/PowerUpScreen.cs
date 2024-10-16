@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -46,7 +47,6 @@ public class PowerUpScreen : MonoBehaviour
             foreach(string powerUp in powerUps)
             {
                 tempList.Add(powerUp);
-                print("List Item: " + powerUp);
             }
 
             while(tempList.Count > powerUpDisplayCount)
@@ -122,14 +122,10 @@ public class PowerUpScreen : MonoBehaviour
         }
         else if (currentPowerUp == powerUps[2])
         {
-            if(playerData.current_fire_rate <= 0.2)
+            if (!playerData.FireRatePowerUp())
             {
                 powerUps.Remove("Fire Rate");
-                Debug.Log("FireRate");
-            }
-            else
-            {
-                playerData.FireRatePowerUp();
+                Debug.Log("removed");
             }
         }
         DisablePowerUpScreen();
