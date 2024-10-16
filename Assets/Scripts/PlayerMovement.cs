@@ -40,14 +40,13 @@ public class PlayerMovement : MonoBehaviour
         // Find movement action in player input component, this uses WASD
         moveAction = playerInput.actions.FindAction("Movement");
 
-        moveSpeedMaximum = playerData.current_speed;
-
         // Enable movement action
         moveAction.Enable();
     }
 
     void Update()
     {
+        moveSpeedMaximum = playerData.current_speed;
         if (playerInput.actions["Movement"].IsPressed())
         {
             // If one of the WASD keys is being pressed get the direction

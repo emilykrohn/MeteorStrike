@@ -11,12 +11,13 @@ using UnityEngine.UIElements;
 // https://www.w3schools.com/cs/cs_foreach_loop.php (Foreach Loop)
 // https://www.w3schools.com/python/python_lists_remove.asp (Remove from list)
 // https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html (How to make the UI Buttons functional)
+// https://www.geeksforgeeks.org/c-sharp-how-to-check-whether-a-list-contains-a-specified-element/# (Contains)
 
 public class PowerUpScreen : MonoBehaviour
 {
     UIDocument UIDoc;
     int powerUpDisplayCount = 3;
-    List<string> powerUps = new List<string> {"Heal", "Speed", "Fire rate"};
+    List<string> powerUps = new List<string> {"Heal", "Speed", "Fire Rate"};
     List<string> tempList = new List<string>();
 
     Button button1;
@@ -40,10 +41,12 @@ public class PowerUpScreen : MonoBehaviour
     {
         if (!hasLoadedPowerUpScreen && UIDoc.isActiveAndEnabled && !(powerUps.Count == 1 && playerData.current_health > 100))
         {
+            tempList.Clear();
             hasLoadedPowerUpScreen = true;
             foreach(string powerUp in powerUps)
             {
                 tempList.Add(powerUp);
+                print("List Item: " + powerUp);
             }
 
             while(tempList.Count > powerUpDisplayCount)
@@ -57,15 +60,23 @@ public class PowerUpScreen : MonoBehaviour
 
             buttonList.Add(button1);
             button1.RegisterCallback<ClickEvent>(Button1);
-            if(tempList.Count >= 2)
+            if(tempList.Contains("Speed"))
             {
                 buttonList.Add(button2);
                 button2.RegisterCallback<ClickEvent>(Button2);
             }
-            if (tempList.Count == 3)
+            else
+            {
+                button2.text = "Max Speed";
+            }
+            if (tempList.Contains("Fire Rate"))
             {
                 buttonList.Add(button3);
                 button3.RegisterCallback<ClickEvent>(Button3);
+            }
+            else
+            {
+                button3.text = "Max Fire Rate";
             }
         }
         else
@@ -96,27 +107,29 @@ public class PowerUpScreen : MonoBehaviour
         buttonList[index].text = currentPowerUp;
         if(currentPowerUp == powerUps[0])
         {
-            if (!(playerData.current_health >= 100))
-            {
-                playerData.HealPowerUp();
-            }
+            playerData.HealPowerUp();
         }
         else if(currentPowerUp == powerUps[1])
         {
-            playerData.SpeedPowerUp();
-            if (playerData.current_speed > 20)
+            if (playerData.current_speed >= 12)
             {
                 powerUps.Remove("Speed");
-                Debug.Log("speed");
+            }
+            else
+            {
+                playerData.SpeedPowerUp();
             }
         }
         else if (currentPowerUp == powerUps[2])
         {
-            playerData.FireRatePowerUp();
             if(playerData.current_fire_rate <= 0.2)
             {
                 powerUps.Remove("Fire Rate");
-                Debug.Log("firerate");
+                Debug.Log("FireRate");
+            }
+            else
+            {
+                playerData.FireRatePowerUp();
             }
         }
         DisablePowerUpScreen();

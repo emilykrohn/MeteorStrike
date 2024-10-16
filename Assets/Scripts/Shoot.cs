@@ -20,10 +20,10 @@ public class Shoot : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         playerData = GetComponent<PlayerData>();
-        shootCooldown = playerData.current_fire_rate;
     }
     void Update()
     {
+        shootCooldown = playerData.current_fire_rate;
         /* Add the time between frames to the timer so the timer will be the amount of time that has passed since the scene started or
            since the last reset when a bullet is shot */
         shootTimer += Time.deltaTime;

@@ -44,11 +44,11 @@ public class PlayerData : MonoBehaviour
 
         SaveData.pointsGoal = 20;
 
-        current_speed = 10;
-        SaveData.speed = 10;
+        current_speed = 6;
+        SaveData.speed = 6;
 
-        current_fire_rate = 0.4f;
-        SaveData.fireRate = 0.4f;
+        current_fire_rate = 1f;
+        SaveData.fireRate = 1f;
 
         SaveData.hasMaxPowerUps = false;
     }
@@ -104,7 +104,7 @@ public class PlayerData : MonoBehaviour
 
     public void SpeedPowerUp()
     {
-        current_speed += 5;
+        current_speed += 2;
     }
 
     public void FireRatePowerUp()
