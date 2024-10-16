@@ -58,7 +58,7 @@ public class PowerUpScreen : MonoBehaviour
             button2 = UIDoc.rootVisualElement.Q("PowerUpButton2") as Button;
             button3 = UIDoc.rootVisualElement.Q("PowerUpButton3") as Button;
 
-            if (playerData.current_health < 100)
+            if (playerData.current_health != 100)
             {
                 buttonList.Add(button1);
                 button1.RegisterCallback<ClickEvent>(Button1);
@@ -131,7 +131,6 @@ public class PowerUpScreen : MonoBehaviour
             if (!playerData.FireRatePowerUp())
             {
                 powerUps.Remove("Fire Rate");
-                Debug.Log("removed");
             }
         }
         DisablePowerUpScreen();
