@@ -10,9 +10,11 @@ public class PlayerSaveData : ScriptableObject
 {
     public int health = 100;
     public int points = 0;
+    public int pointsGoal = 20;
     public bool isLoadGame = false;
     public float musicVolume = 100;
     public float sfxVolume = 100;
+    public int level = 1;
     public string previousScene = "MainMenu";
     public bool isSettingMenuOpened = false;
 }

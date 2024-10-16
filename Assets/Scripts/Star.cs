@@ -17,6 +17,8 @@ public class Star : MonoBehaviour
     AudioClip collectSound;
     [SerializeField]
     PlayerSaveData playerSaveData;
+    [SerializeField]
+    int starPoints = 3;
 
     void Start()
     {
@@ -37,7 +39,7 @@ public class Star : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(collectSound, transform.position, playerSaveData.sfxVolume / 100);
             // Use function from the GameUI script
-            UI.IncreasePoints(1);
+            UI.IncreasePoints(starPoints);
             Destroy(gameObject);
         }
     }

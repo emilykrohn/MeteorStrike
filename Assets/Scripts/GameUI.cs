@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using System;
 
 // CPSC 386 Example04 SceneSwitcher.cs (LoadScene())
 // https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html (LoadScene())
 // https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html (How to make the UI Buttons functional)
+// https://www.geeksforgeeks.org/c-sharp-math-pow-method/# (Power function)
 public class GameUI : MonoBehaviour
 {
     [SerializeField] PlayerSaveData playerSaveData;
@@ -36,11 +38,20 @@ public class GameUI : MonoBehaviour
         pointsBar = UIDoc.rootVisualElement.Q("PointsBar") as ProgressBar;
         healthBar = UIDoc.rootVisualElement.Q("HealthBar") as ProgressBar;
         
-        // Update the healthBar value when GameUI is enabled
+        // Update the healthBar and pointsBar value when GameUI is enabled
         healthBar.value = playerSaveData.health;
         healthBar.title = "Health: " + healthBar.value.ToString();
         pointsBar.value = playerSaveData.points;
-        pointsBar.title = "Points: " + playerSaveData.points.ToString();
+        pointsBar.title = "Level: " + playerSaveData.level.ToString();
+        pointsBar.highValue = playerSaveData.pointsGoal;
+    }
+
+    public void UpdatePointsGoal()
+    {
+        playerSaveData.pointsGoal = (int)(0.25 * Math.Pow(playerData.current_level, 2) + 20);
+        pointsBar.highValue = playerSaveData.pointsGoal;
+        playerData.current_level++;
+        pointsBar.title = "Level: " + playerData.current_level.ToString();
     }
 
     /// <summary>
@@ -48,10 +59,13 @@ public class GameUI : MonoBehaviour
     /// </summary>
     public void IncreasePoints(int new_points)
     {
-        // Increase current points by the new_points amount and update points label to this new number
         playerData.current_points += new_points;
+        if (playerData.current_points >= playerSaveData.pointsGoal)
+        {
+            playerData.current_points -= playerSaveData.pointsGoal;
+            UpdatePointsGoal();
+        }
         pointsBar.value = playerData.current_points;
-        pointsBar.title = "Points: " + playerData.current_points.ToString();
     }
 
     /// <summary>

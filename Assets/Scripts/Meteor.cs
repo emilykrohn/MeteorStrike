@@ -17,6 +17,8 @@ public class Meteor : MonoBehaviour
     float timer = 0;
     [SerializeField]
     float delay = 5f;
+    [SerializeField]
+    int meteorPoints = 5;
     GameUI UI;
     void Start()
     {
@@ -46,6 +48,7 @@ public class Meteor : MonoBehaviour
 
         if (other.CompareTag("Bullet"))
         {
+            UI.IncreasePoints(meteorPoints);
             AudioSource.PlayClipAtPoint(hitSound, transform.position, playerSaveData.sfxVolume / 100);
             // Destroy this instance of a meteor
             Destroy(gameObject);

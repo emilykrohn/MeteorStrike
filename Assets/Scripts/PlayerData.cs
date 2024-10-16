@@ -15,6 +15,7 @@ public class PlayerData : MonoBehaviour
     // Current lives the player has durring the game
     public int current_health;
     public int current_points;
+    public int current_level;
 
     /// <summary>
     /// Resets the player's stats in the PlayerSaveData Scriptable Object
@@ -25,6 +26,9 @@ public class PlayerData : MonoBehaviour
         current_health = maxHealth;
         SaveData.points = 0;
         current_points = 0;
+        SaveData.level = 1;
+        current_level = 1;
+        SaveData.pointsGoal = 20;
     }
 
     /// <summary>
@@ -34,6 +38,7 @@ public class PlayerData : MonoBehaviour
     {
         current_health = SaveData.health;
         current_points = SaveData.points;
+        current_level = SaveData.level;
     }
 
     /// <summary>
@@ -43,6 +48,7 @@ public class PlayerData : MonoBehaviour
     {
         SaveData.health = current_health;
         SaveData.points = current_points;
+        SaveData.level = current_level;
     }
 
     /// <summary>
