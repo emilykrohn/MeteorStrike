@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 // https://gamedevbeginner.com/the-right-way-to-pause-the-game-in-unity/ (Pause game when menu open)
 // https://stackoverflow.com/questions/723211/quick-way-to-create-a-list-of-values-in-c (How to Use C# Lists)
+// https://stackoverflow.com/questions/61022245/c-sharp-list-add-works-but-not-append (Add to a list)
 // https://www.w3schools.com/cs/cs_foreach_loop.php (Foreach Loop)
 // https://www.w3schools.com/python/python_lists_remove.asp (Remove from list)
 // https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html (How to make the UI Buttons functional)
@@ -26,6 +27,8 @@ public class PowerUpScreen : MonoBehaviour
     PlayerData playerData;
     GameUI gameUI;
 
+    bool hasLoadedPowerUpScreen = false;
+
     void OnEnable()
     {
         playerData = FindAnyObjectByType<PlayerData>();
@@ -35,33 +38,34 @@ public class PowerUpScreen : MonoBehaviour
 
     void Update()
     {
-        if (UIDoc.isActiveAndEnabled && !(powerUps.Count == 1 && playerData.current_health > 100))
+        if (!hasLoadedPowerUpScreen && UIDoc.isActiveAndEnabled && !(powerUps.Count == 1 && playerData.current_health > 100))
         {
-
+            hasLoadedPowerUpScreen = true;
             foreach(string powerUp in powerUps)
             {
-                tempList.Append(powerUp);
+                tempList.Add(powerUp);
+                Debug.Log(powerUp);
             }
 
             while(tempList.Count > powerUpDisplayCount)
             {
-                tempList.Remove(tempList[Random.Range(0, tempList.Count)]);
+                tempList.Remove(tempList[Random.Range(0, tempList.Count - 1)]);
             }
 
             button1 = UIDoc.rootVisualElement.Q("PowerUpButton1") as Button;
             button2 = UIDoc.rootVisualElement.Q("PowerUpButton2") as Button;
             button3 = UIDoc.rootVisualElement.Q("PowerUpButton3") as Button;
 
-            buttonList.Append(button1);
+            buttonList.Add(button1);
             button1.RegisterCallback<ClickEvent>(Button1);
-            if(powerUps.Count >= 2)
+            if(tempList.Count >= 2)
             {
-                buttonList.Append(button2);
+                buttonList.Add(button2);
                 button2.RegisterCallback<ClickEvent>(Button2);
             }
-            if (powerUps.Count == 3)
+            if (tempList.Count == 3)
             {
-                buttonList.Append(button3);
+                buttonList.Add(button3);
                 button3.RegisterCallback<ClickEvent>(Button3);
             }
         }
@@ -104,14 +108,16 @@ public class PowerUpScreen : MonoBehaviour
             if (playerData.current_speed > 20)
             {
                 powerUps.Remove("Speed");
+                Debug.Log("speed");
             }
         }
-        else if (currentPowerUp == powerUps[3])
+        else if (currentPowerUp == powerUps[2])
         {
             playerData.FireRatePowerUp();
             if(playerData.current_fire_rate <= 0.2)
             {
                 powerUps.Remove("Fire Rate");
+                Debug.Log("firerate");
             }
         }
         DisablePowerUpScreen();
@@ -125,6 +131,7 @@ public class PowerUpScreen : MonoBehaviour
 
     void DisablePowerUpScreen()
     {
+        hasLoadedPowerUpScreen = false;
         Time.timeScale = 1;
         UIDoc.enabled = false;
     }
