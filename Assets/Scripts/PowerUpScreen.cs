@@ -13,6 +13,7 @@ using UnityEngine.UIElements;
 // https://www.w3schools.com/python/python_lists_remove.asp (Remove from list)
 // https://docs.unity3d.com/Manual/UIE-get-started-with-runtime-ui.html (How to make the UI Buttons functional)
 // https://www.geeksforgeeks.org/c-sharp-how-to-check-whether-a-list-contains-a-specified-element/# (Contains)
+// https://discussions.unity.com/t/how-should-i-hide-show-a-visualelement/826879/4 (UI Toolkit display)
 
 public class PowerUpScreen : MonoBehaviour
 {
@@ -51,18 +52,6 @@ public class PowerUpScreen : MonoBehaviour
     {
         if (!hasLoadedPowerUpScreen && UIDoc.isActiveAndEnabled && !(powerUps.Count == 1 && playerData.current_health > 100))
         {
-            tempList.Clear();
-            hasLoadedPowerUpScreen = true;
-            foreach(string powerUp in powerUps)
-            {
-                tempList.Add(powerUp);
-            }
-
-            while(tempList.Count > powerUpDisplayCount)
-            {
-                tempList.Remove(tempList[Random.Range(0, tempList.Count - 1)]);
-            }
-
             button1 = UIDoc.rootVisualElement.Q("PowerUpButton1") as Button;
             button2 = UIDoc.rootVisualElement.Q("PowerUpButton2") as Button;
             button3 = UIDoc.rootVisualElement.Q("PowerUpButton3") as Button;
@@ -79,17 +68,31 @@ public class PowerUpScreen : MonoBehaviour
 
             fireRateBar.value = playerData.current_fire_rate_level;
             fireRateBar.highValue = playerSaveData.maxFireRateLevel;
+            
+            Debug.Log(powerUps.Count);
 
             if (playerData.current_health != 100)
             {
                 buttonList.Add(button1);
                 button1.RegisterCallback<ClickEvent>(Button1);
+                playerData.current_has_max_stats = false;
             }
             else
             {
                 button1.text = "Max Health";
+
+                if (powerUps.Count == 1)
+                {
+                    playerData.current_has_max_stats = true;
+                    DisablePowerUpScreen();
+                }
+                else
+                {
+                    playerData.current_has_max_stats = false;
+                }
             }
-            if(tempList.Contains("Speed"))
+            Debug.Log(playerData.current_has_max_stats);
+            if(powerUps.Contains("Speed"))
             {
                 buttonList.Add(button2);
                 button2.RegisterCallback<ClickEvent>(Button2);
@@ -98,7 +101,7 @@ public class PowerUpScreen : MonoBehaviour
             {
                 button2.text = "Max Speed";
             }
-            if (tempList.Contains("Fire Rate"))
+            if (powerUps.Contains("Fire Rate"))
             {
                 buttonList.Add(button3);
                 button3.RegisterCallback<ClickEvent>(Button3);
@@ -151,6 +154,12 @@ public class PowerUpScreen : MonoBehaviour
             if (playerData.current_speed > 11)
             {
                 powerUps.Remove("Speed");
+                Debug.Log("remove speed");
+                if (powerUps.Count == 1)
+                {
+                    playerData.current_has_max_stats = true;
+                }
+
             }
         }
         else if (powerUp == "Fire Rate")
@@ -158,6 +167,11 @@ public class PowerUpScreen : MonoBehaviour
             if(playerData.current_fire_rate < 0.5)
             {
                 powerUps.Remove("Fire Rate");
+                Debug.Log("remove fire rate");
+                if (powerUps.Count == 1)
+                {
+                    playerData.current_has_max_stats = true;
+                }
             }
             playerData.FireRatePowerUp();
             playerData.current_fire_rate_level++;

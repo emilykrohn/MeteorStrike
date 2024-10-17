@@ -24,4 +24,5 @@ public class PlayerSaveData : ScriptableObject
     public bool hasMaxPowerUps = false;
     public string previousScene = "MainMenu";
     public bool isSettingMenuOpened = false;
+    public bool hasMaxStats = false;
 }

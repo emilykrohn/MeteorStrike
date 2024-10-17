@@ -50,7 +50,20 @@ public class GameUI : MonoBehaviour
         pointsBar.highValue = playerSaveData.pointsGoal;
 
         maxPowerUpsLabel = UIDoc.rootVisualElement.Q("MaxPowerUpsLabel") as Label;
-        maxPowerUpsLabel.visible = false;
+
+    }
+
+    public void UpdateMaxPowerLabel()
+    {
+        Debug.Log(playerData.current_has_max_stats);
+        if (playerData.current_has_max_stats)
+        {
+            maxPowerUpsLabel.style.display = DisplayStyle.Flex;
+        }
+        else
+        {
+            maxPowerUpsLabel.style.display = DisplayStyle.None;
+        }
     }
 
     public void UpdatePointsGoal()
@@ -60,7 +73,10 @@ public class GameUI : MonoBehaviour
         pointsBar.highValue = playerSaveData.pointsGoal;
         playerData.current_level++;
         pointsBar.title = "Level: " + playerData.current_level.ToString();
-        powerUpScreen.EnablePowerUpScreen();
+        if (!playerData.current_has_max_stats)
+        {
+            powerUpScreen.EnablePowerUpScreen();
+        }
     }
 
     /// <summary>
@@ -84,6 +100,8 @@ public class GameUI : MonoBehaviour
     {
         // Decrease current lives by damage amount
         playerData.current_health -= damage;
+        
+        playerData.current_has_max_stats = false;
 
         // Check if lives is less than or equal to zero, if so then load game over scene
         if (playerData.current_health <= 0)
