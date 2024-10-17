@@ -48,21 +48,6 @@ public class GameUI : MonoBehaviour
         pointsBar.value = playerSaveData.points;
         pointsBar.title = "Level: " + playerSaveData.level.ToString();
         pointsBar.highValue = playerSaveData.pointsGoal;
-
-        maxPowerUpsLabel = UIDoc.rootVisualElement.Q("MaxPowerUpsLabel") as Label;
-
-    }
-
-    public void UpdateMaxPowerLabel()
-    {
-        if (playerData.current_has_max_stats)
-        {
-            maxPowerUpsLabel.style.display = DisplayStyle.Flex;
-        }
-        else
-        {
-            maxPowerUpsLabel.style.display = DisplayStyle.None;
-        }
     }
 
     public void UpdatePointsGoal()

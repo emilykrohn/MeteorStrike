@@ -21,8 +21,6 @@ public class PowerUpScreen : MonoBehaviour
     PlayerSaveData playerSaveData;
     UIDocument UIDoc;
     List<string> powerUps = new List<string> {"Heal", "Speed", "Fire Rate"};
-    List<string> tempList = new List<string>();
-
     Button button1;
     Button button2;
     Button button3;
@@ -110,7 +108,6 @@ public class PowerUpScreen : MonoBehaviour
         else
         {
             playerData.current_has_max_power_ups = true;
-            gameUI.maxPowerUpsLabel.visible = true;
         }
     }
 
