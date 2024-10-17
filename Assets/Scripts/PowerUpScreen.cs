@@ -16,6 +16,8 @@ using UnityEngine.UIElements;
 
 public class PowerUpScreen : MonoBehaviour
 {
+    [SerializeField]
+    PlayerSaveData playerSaveData;
     UIDocument UIDoc;
     int powerUpDisplayCount = 3;
     List<string> powerUps = new List<string> {"Heal", "Speed", "Fire Rate"};
@@ -25,6 +27,10 @@ public class PowerUpScreen : MonoBehaviour
     Button button2;
     Button button3;
     List<Button> buttonList = new List<Button>();
+
+    ProgressBar healthBar;
+    ProgressBar speedBar;
+    ProgressBar fireRateBar;
 
     PlayerData playerData;
     GameUI gameUI;
@@ -57,6 +63,19 @@ public class PowerUpScreen : MonoBehaviour
             button1 = UIDoc.rootVisualElement.Q("PowerUpButton1") as Button;
             button2 = UIDoc.rootVisualElement.Q("PowerUpButton2") as Button;
             button3 = UIDoc.rootVisualElement.Q("PowerUpButton3") as Button;
+
+            healthBar = UIDoc.rootVisualElement.Q("HPBar") as ProgressBar;
+            speedBar = UIDoc.rootVisualElement.Q("SpeedBar") as ProgressBar;
+            fireRateBar = UIDoc.rootVisualElement.Q("FireRateBar") as ProgressBar;
+
+            healthBar.value = playerData.current_health;
+            healthBar.highValue = 100;
+
+            speedBar.value = playerData.current_speed_level;
+            speedBar.highValue = playerSaveData.maxSpeedLevel;
+
+            fireRateBar.value = playerData.current_fire_rate_level;
+            fireRateBar.highValue = playerSaveData.maxFireRateLevel;
 
             if (playerData.current_health != 100)
             {
@@ -117,21 +136,22 @@ public class PowerUpScreen : MonoBehaviour
         }
         else if(powerUp == "Speed")
         {
-            if (playerData.current_speed >= 12)
+            playerData.SpeedPowerUp();
+            playerData.current_speed_level++;
+            if (playerData.current_speed > 11)
             {
+                Debug.Log("removed speed");
                 powerUps.Remove("Speed");
-            }
-            else
-            {
-                playerData.SpeedPowerUp();
             }
         }
         else if (powerUp == "Fire Rate")
         {
-            if (!playerData.FireRatePowerUp())
+            if(playerData.current_fire_rate < 0.5)
             {
                 powerUps.Remove("Fire Rate");
             }
+            playerData.FireRatePowerUp();
+            playerData.current_fire_rate_level++;
         }
         DisablePowerUpScreen();
     }

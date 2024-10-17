@@ -22,6 +22,8 @@ public class PlayerData : MonoBehaviour
     public int current_speed;
     public float current_fire_rate;
     public bool current_has_max_power_ups;
+    public int current_fire_rate_level;
+    public int current_speed_level;
 
     void Start()
     {
@@ -51,6 +53,12 @@ public class PlayerData : MonoBehaviour
         SaveData.fireRate = 1f;
 
         SaveData.hasMaxPowerUps = false;
+
+        current_fire_rate_level = 1;
+        SaveData.fireRateLevel = 1;
+
+        current_speed_level = 1;
+        SaveData.speedLevel = 1;
     }
 
     /// <summary>
@@ -64,6 +72,8 @@ public class PlayerData : MonoBehaviour
         current_speed = SaveData.speed;
         current_fire_rate = SaveData.fireRate;
         current_has_max_power_ups = SaveData.hasMaxPowerUps;
+        current_fire_rate_level = SaveData.fireRateLevel;
+        current_speed_level = SaveData.speedLevel;
     }
 
     /// <summary>
@@ -77,6 +87,8 @@ public class PlayerData : MonoBehaviour
         SaveData.speed = current_speed;
         SaveData.fireRate = current_fire_rate;
         SaveData.hasMaxPowerUps = current_has_max_power_ups;
+        SaveData.fireRateLevel = current_fire_rate_level;
+        SaveData.speedLevel = current_speed_level;
     }
 
     /// <summary>
@@ -107,16 +119,8 @@ public class PlayerData : MonoBehaviour
         current_speed += 2;
     }
 
-    public bool FireRatePowerUp()
+    public void FireRatePowerUp()
     {
-        if(current_fire_rate > 0.4)
-        {
-            current_fire_rate -= 0.2f;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        current_fire_rate -= 0.2f;
     }
 }

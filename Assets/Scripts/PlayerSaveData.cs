@@ -17,6 +17,10 @@ public class PlayerSaveData : ScriptableObject
     public float musicVolume = 100;
     public float sfxVolume = 100;
     public int level = 1;
+    public int speedLevel = 1;
+    public int maxSpeedLevel = 4;
+    public int fireRateLevel = 1;
+    public int maxFireRateLevel = 5;
     public bool hasMaxPowerUps = false;
     public string previousScene = "MainMenu";
     public bool isSettingMenuOpened = false;
