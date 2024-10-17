@@ -35,10 +35,13 @@ public class PowerUpScreen : MonoBehaviour
     PlayerData playerData;
     GameUI gameUI;
 
+    AudioSource audioSource;
+
     bool hasLoadedPowerUpScreen = false;
 
     void OnEnable()
     {
+        audioSource = GameObject.FindGameObjectWithTag("ButtonSound").GetComponent<AudioSource>();
         playerData = FindAnyObjectByType<PlayerData>();
         gameUI = FindAnyObjectByType<GameUI>();
         UIDoc = GetComponent<UIDocument>();
@@ -114,23 +117,29 @@ public class PowerUpScreen : MonoBehaviour
 
     void Button1(ClickEvent evt)
     {
+        audioSource.volume = playerSaveData.sfxVolume / 100;
+        audioSource.Play();
         PowerUpButton("Heal", button1);
     }
 
     void Button2(ClickEvent evt)
     {
+        audioSource.volume = playerSaveData.sfxVolume / 100;
+        audioSource.Play();
         PowerUpButton("Speed", button2);
     }
 
     void Button3(ClickEvent evt)
     {
+        audioSource.volume = playerSaveData.sfxVolume / 100;
+        audioSource.Play();
         PowerUpButton("Fire Rate", button3);
     }
 
     void PowerUpButton(string powerUp, Button button)
     {
         button.text = powerUp;
-        if(powerUp == "Health")
+        if(powerUp == "Heal")
         {
             playerData.HealPowerUp();
         }
@@ -139,12 +148,8 @@ public class PowerUpScreen : MonoBehaviour
             playerData.SpeedPowerUp();
             playerData.current_speed_level++;
 
-            Debug.Log(speedBar.value);
-            Debug.Log(speedBar.highValue);
-            
             if (playerData.current_speed > 11)
             {
-                Debug.Log("removed speed");
                 powerUps.Remove("Speed");
             }
         }
