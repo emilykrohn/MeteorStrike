@@ -55,7 +55,6 @@ public class GameUI : MonoBehaviour
 
     public void UpdateMaxPowerLabel()
     {
-        Debug.Log(playerData.current_has_max_stats);
         if (playerData.current_has_max_stats)
         {
             maxPowerUpsLabel.style.display = DisplayStyle.Flex;

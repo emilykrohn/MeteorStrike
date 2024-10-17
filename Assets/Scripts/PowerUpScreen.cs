@@ -20,7 +20,6 @@ public class PowerUpScreen : MonoBehaviour
     [SerializeField]
     PlayerSaveData playerSaveData;
     UIDocument UIDoc;
-    int powerUpDisplayCount = 3;
     List<string> powerUps = new List<string> {"Heal", "Speed", "Fire Rate"};
     List<string> tempList = new List<string>();
 
@@ -69,8 +68,6 @@ public class PowerUpScreen : MonoBehaviour
             fireRateBar.value = playerData.current_fire_rate_level;
             fireRateBar.highValue = playerSaveData.maxFireRateLevel;
             
-            Debug.Log(powerUps.Count);
-
             if (playerData.current_health != 100)
             {
                 buttonList.Add(button1);
@@ -91,7 +88,6 @@ public class PowerUpScreen : MonoBehaviour
                     playerData.current_has_max_stats = false;
                 }
             }
-            Debug.Log(playerData.current_has_max_stats);
             if(powerUps.Contains("Speed"))
             {
                 buttonList.Add(button2);
@@ -154,7 +150,6 @@ public class PowerUpScreen : MonoBehaviour
             if (playerData.current_speed > 11)
             {
                 powerUps.Remove("Speed");
-                Debug.Log("remove speed");
                 if (powerUps.Count == 1)
                 {
                     playerData.current_has_max_stats = true;
@@ -167,7 +162,6 @@ public class PowerUpScreen : MonoBehaviour
             if(playerData.current_fire_rate < 0.5)
             {
                 powerUps.Remove("Fire Rate");
-                Debug.Log("remove fire rate");
                 if (powerUps.Count == 1)
                 {
                     playerData.current_has_max_stats = true;
