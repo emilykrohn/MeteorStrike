@@ -12,4 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f477e98568f342544a23ead97b679f7d, type: 3}
   m_Name: PlayerSaveData
   m_EditorClassIdentifier: 
-  lives: 3
+  health: 100
+  points: 0
+  pointsGoal: 36
+  speed: 6
+  fireRate: 1
+  isLoadGame: 0
+  musicVolume: 100
+  sfxVolume: 100
+  level: 1
+  speedLevel: 1
+  maxSpeedLevel: 4
+  fireRateLevel: 1
+  maxFireRateLevel: 5
+  hasMaxPowerUps: 0
+  previousScene: Game
+  isSettingMenuOpened: 0

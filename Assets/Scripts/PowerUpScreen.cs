@@ -138,6 +138,10 @@ public class PowerUpScreen : MonoBehaviour
         {
             playerData.SpeedPowerUp();
             playerData.current_speed_level++;
+
+            Debug.Log(speedBar.value);
+            Debug.Log(speedBar.highValue);
+            
             if (playerData.current_speed > 11)
             {
                 Debug.Log("removed speed");
