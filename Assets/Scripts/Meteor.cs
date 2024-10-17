@@ -42,6 +42,7 @@ public class Meteor : MonoBehaviour
         {
             // Call function in the game UI to decrease player lives and update UI
             UI.DecreaseHealth(10);
+            // Play hit sound
             AudioSource.PlayClipAtPoint(hitSound, transform.position, playerSaveData.sfxVolume / 100);
             Destroy(gameObject);
         }
@@ -49,6 +50,7 @@ public class Meteor : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             UI.IncreasePoints(meteorPoints);
+            // Play hit sound
             AudioSource.PlayClipAtPoint(hitSound, transform.position, playerSaveData.sfxVolume / 100);
             // Destroy this instance of a meteor
             Destroy(gameObject);

@@ -24,14 +24,12 @@ public class PowerUpScreen : MonoBehaviour
     Button button1;
     Button button2;
     Button button3;
-    List<Button> buttonList = new List<Button>();
 
     ProgressBar healthBar;
     ProgressBar speedBar;
     ProgressBar fireRateBar;
 
     PlayerData playerData;
-    GameUI gameUI;
 
     AudioSource audioSource;
 
@@ -41,7 +39,6 @@ public class PowerUpScreen : MonoBehaviour
     {
         audioSource = GameObject.FindGameObjectWithTag("ButtonSound").GetComponent<AudioSource>();
         playerData = FindAnyObjectByType<PlayerData>();
-        gameUI = FindAnyObjectByType<GameUI>();
         UIDoc = GetComponent<UIDocument>();
     }
 
@@ -49,14 +46,18 @@ public class PowerUpScreen : MonoBehaviour
     {
         if (!hasLoadedPowerUpScreen && UIDoc.isActiveAndEnabled && !(powerUps.Count == 1 && playerData.current_health > 100))
         {
+            // Button options for the power ups
             button1 = UIDoc.rootVisualElement.Q("PowerUpButton1") as Button;
             button2 = UIDoc.rootVisualElement.Q("PowerUpButton2") as Button;
             button3 = UIDoc.rootVisualElement.Q("PowerUpButton3") as Button;
 
+            // Power up progress bars
             healthBar = UIDoc.rootVisualElement.Q("HPBar") as ProgressBar;
             speedBar = UIDoc.rootVisualElement.Q("SpeedBar") as ProgressBar;
             fireRateBar = UIDoc.rootVisualElement.Q("FireRateBar") as ProgressBar;
 
+
+            // Update the values for the progress bars
             healthBar.value = playerData.current_health;
             healthBar.highValue = 100;
 
@@ -66,48 +67,52 @@ public class PowerUpScreen : MonoBehaviour
             fireRateBar.value = playerData.current_fire_rate_level;
             fireRateBar.highValue = playerSaveData.maxFireRateLevel;
             
+            // If the current health is not full, then allow heal button functionality
             if (playerData.current_health != 100)
             {
-                buttonList.Add(button1);
                 button1.RegisterCallback<ClickEvent>(Button1);
+                // If health isn't full stats aren't max, allow the player to heal.
                 playerData.current_has_max_stats = false;
             }
             else
             {
+                // Update button text so player knows they can't use this power up option
                 button1.text = "Max Health";
 
+                // If heal is the only power up and the health is full then the stats are max and and teh Power up screen should be disabled
                 if (powerUps.Count == 1)
                 {
                     playerData.current_has_max_stats = true;
                     DisablePowerUpScreen();
                 }
+                // Else there are other power up options and the stats are not max, just means that heal isn't an option
                 else
                 {
                     playerData.current_has_max_stats = false;
                 }
             }
+
+            // If the powerUps list contains "Speed"
             if(powerUps.Contains("Speed"))
             {
-                buttonList.Add(button2);
+                // Allow Button 2 for speed functionality
                 button2.RegisterCallback<ClickEvent>(Button2);
             }
             else
             {
+                // Update button text so player knows they can't use this power up option
                 button2.text = "Max Speed";
             }
             if (powerUps.Contains("Fire Rate"))
             {
-                buttonList.Add(button3);
+                // Allow Button 3 for fire rate functionality
                 button3.RegisterCallback<ClickEvent>(Button3);
             }
             else
             {
+                // Update button text so player knows they can't use this power up option
                 button3.text = "Max Fire Rate";
             }
-        }
-        else
-        {
-            playerData.current_has_max_power_ups = true;
         }
     }
 
@@ -137,16 +142,20 @@ public class PowerUpScreen : MonoBehaviour
         button.text = powerUp;
         if(powerUp == "Heal")
         {
+            // Heal the player
             playerData.HealPowerUp();
         }
         else if(powerUp == "Speed")
         {
+            // update speed stat and level
             playerData.SpeedPowerUp();
             playerData.current_speed_level++;
 
+            // If speed stat is at max, remove it form powerUps list options
             if (playerData.current_speed > 11)
             {
                 powerUps.Remove("Speed");
+                // If heal is only power up left, current has max stats is true, will check later if player health is full of not in Update
                 if (powerUps.Count == 1)
                 {
                     playerData.current_has_max_stats = true;
@@ -156,17 +165,21 @@ public class PowerUpScreen : MonoBehaviour
         }
         else if (powerUp == "Fire Rate")
         {
+            // If fire rate stat is at max, remove it form powerUps list options
             if(playerData.current_fire_rate < 0.5)
             {
                 powerUps.Remove("Fire Rate");
+                // If heal is only power up left, current has max stats is true, will check later if player health is full of not in Update
                 if (powerUps.Count == 1)
                 {
                     playerData.current_has_max_stats = true;
                 }
             }
+            // Update fire rate stat and level
             playerData.FireRatePowerUp();
             playerData.current_fire_rate_level++;
         }
+        // Close power up screen once the player has picked a power up
         DisablePowerUpScreen();
     }
 

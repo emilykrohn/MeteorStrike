@@ -52,11 +52,22 @@ public class GameUI : MonoBehaviour
 
     public void UpdatePointsGoal()
     {
+        // Play level up sound
         AudioSource.PlayClipAtPoint(levelUpSound, transform.position, playerSaveData.sfxVolume / 100);
+
+        // Update player points goal
         playerSaveData.pointsGoal = (int)(0.25 * Math.Pow(playerData.current_level, 2) + 20);
+
+        // Update the new high value for the points progress bar
         pointsBar.highValue = playerSaveData.pointsGoal;
+
+        // Increase the current player level
         playerData.current_level++;
+
+        // Update the points progress bar title to the new player level
         pointsBar.title = "Level: " + playerData.current_level.ToString();
+
+        // If the player doesn't have max stats, show power up screen
         if (!playerData.current_has_max_stats)
         {
             powerUpScreen.EnablePowerUpScreen();
@@ -68,12 +79,18 @@ public class GameUI : MonoBehaviour
     /// </summary>
     public void IncreasePoints(int new_points)
     {
+        // Increase current points by new_points
         playerData.current_points += new_points;
+
+        // If the new current_points amount is over the points goal, then update the points goal
         if (playerData.current_points >= playerSaveData.pointsGoal)
         {
+            // If the player went over the goal amount, let them keep the extra points they earned
             playerData.current_points -= playerSaveData.pointsGoal;
             UpdatePointsGoal();
         }
+
+        // Update the points progress bar value by the new current points amount
         pointsBar.value = playerData.current_points;
     }
 
@@ -102,13 +119,17 @@ public class GameUI : MonoBehaviour
 
     public void IncreaseHealth(int health)
     {
+        // Increase the player's current health by health arguement amount
         playerData.current_health += health;
+
+        // If the player's health is more than 100 after adding the arguement health amount, set the current health to 100
         if (playerData.current_health > 100)
         {
             playerData.current_health = 100;
         }
         else
         {
+            // otherwise, update healthBar to new health amount
             healthBar.value = playerData.current_health;
             healthBar.title = "Health: " + healthBar.value.ToString();
         }

@@ -64,6 +64,7 @@ public class Settings : MonoBehaviour
         backButton.RegisterCallback<ClickEvent>(LoadPreviousScene);
     }
 
+    // This is for the back button
     void LoadPreviousScene(ClickEvent evt)
     {
         buttonAudioSource.volume = playerSaveData.sfxVolume / 100;
