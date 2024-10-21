@@ -250,7 +250,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1606143650944069051, guid: 3eea683259a83ee4d80501a02dba2e9d, type: 3}
-  shootCooldown: 0.4
 --- !u!114 &2886508766588024674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +263,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SaveData: {fileID: 11400000, guid: 6ac10f8547ef5894aaf3a6ba2bf6db34, type: 2}
+  ResetData: {fileID: 11400000, guid: 0311049be709281459a67ed4b5efac2c, type: 2}
   maxHealth: 100
+  healthPowerUpAmount: 10
+  current_has_max_stats: 0
+  current_has_max_power_ups: 0
   current_health: 0
   current_points: 0
+  current_speed: 0
+  current_fire_rate: 0
   current_level: 0
+  current_fire_rate_level: 0
+  current_speed_level: 0

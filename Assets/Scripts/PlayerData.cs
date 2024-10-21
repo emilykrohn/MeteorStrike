@@ -10,9 +10,10 @@ using UnityEngine;
 /// </summary>
 public class PlayerData : MonoBehaviour
 {
+    [Header("PlayerSaveData Scriptable Objects")]
     [SerializeField] PlayerSaveData SaveData;
+    [SerializeField] PlayerSaveData ResetData;
     [Header("Max Stats")]
-    [SerializeField] int maxHealth = 100;
     [SerializeField] int healthPowerUpAmount = 10;
     public bool current_has_max_stats;
     public bool current_has_max_power_ups;
@@ -39,33 +40,37 @@ public class PlayerData : MonoBehaviour
     /// </summary>
     public void ResetStats()
     {
-        SaveData.health = maxHealth;
-        current_health = maxHealth;
+        // Stats
+        SaveData.health = ResetData.health;
+        current_health = ResetData.health;
 
-        SaveData.points = 0;
-        current_points = 0;
+        current_speed = ResetData.speed;
+        SaveData.speed = ResetData.speed;
 
-        SaveData.level = 1;
-        current_level = 1;
+        current_fire_rate = ResetData.fireRate;
+        SaveData.fireRate = ResetData.fireRate;
 
-        SaveData.pointsGoal = 20;
+        // Points
+        SaveData.points = ResetData.points;
+        current_points = ResetData.points;
 
-        current_speed = 6;
-        SaveData.speed = 6;
+        SaveData.pointsGoal = ResetData.pointsGoal;
 
-        current_fire_rate = 1f;
-        SaveData.fireRate = 1f;
+        // Levels
+        current_fire_rate_level = ResetData.fireRateLevel;
+        SaveData.fireRateLevel = ResetData.fireRateLevel;
 
-        SaveData.hasMaxPowerUps = false;
+        current_speed_level = ResetData.speedLevel;
+        SaveData.speedLevel = ResetData.speedLevel;
+        
+        SaveData.level = ResetData.level;
+        current_level = ResetData.level;
 
-        current_fire_rate_level = 1;
-        SaveData.fireRateLevel = 1;
-
-        current_speed_level = 1;
-        SaveData.speedLevel = 1;
-
-        SaveData.hasMaxStats = false;
-        current_has_max_stats = false;
+        // Max Stats/Power ups
+        SaveData.hasMaxStats = ResetData.hasMaxStats;
+        current_has_max_stats = ResetData.hasMaxStats;
+        
+        SaveData.hasMaxPowerUps = ResetData.hasMaxPowerUps;
     }
 
     /// <summary>
@@ -73,15 +78,22 @@ public class PlayerData : MonoBehaviour
     /// </summary>
     public void LoadStats()
     {
+        // Stats
         current_health = SaveData.health;
-        current_points = SaveData.points;
-        current_level = SaveData.level;
         current_speed = SaveData.speed;
         current_fire_rate = SaveData.fireRate;
-        current_has_max_power_ups = SaveData.hasMaxPowerUps;
+        
+        // Points
+        current_points = SaveData.points;
+        
+        // Level
+        current_level = SaveData.level;
         current_fire_rate_level = SaveData.fireRateLevel;
         current_speed_level = SaveData.speedLevel;
+
+        // Max Stats/Power ups
         current_has_max_stats = SaveData.hasMaxStats;
+        current_has_max_power_ups = SaveData.hasMaxPowerUps;
     }
 
     /// <summary>
@@ -89,15 +101,22 @@ public class PlayerData : MonoBehaviour
     /// </summary>
     public void SaveStats()
     {
+        // Stats
         SaveData.health = current_health;
-        SaveData.points = current_points;
-        SaveData.level = current_level;
         SaveData.speed = current_speed;
         SaveData.fireRate = current_fire_rate;
-        SaveData.hasMaxPowerUps = current_has_max_power_ups;
+
+        // Points
+        SaveData.points = current_points;
+
+        // Level
+        SaveData.level = current_level;
         SaveData.fireRateLevel = current_fire_rate_level;
         SaveData.speedLevel = current_speed_level;
+        
+        // Max Stats/Power ups
         SaveData.hasMaxStats = current_has_max_stats;
+        SaveData.hasMaxPowerUps = current_has_max_power_ups;
     }
 
     /// <summary>
