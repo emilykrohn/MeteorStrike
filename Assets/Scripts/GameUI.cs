@@ -12,11 +12,14 @@ using System;
 public class GameUI : MonoBehaviour
 {
     [SerializeField] PlayerSaveData playerSaveData;
-    [SerializeField] AudioClip levelUpSound;
-    PowerUpScreen powerUpScreen;
     PlayerData playerData;
+
+    [SerializeField] AudioClip levelUpSound;
+
+    PowerUpScreen powerUpScreen;
     ProgressBar pointsBar;
     ProgressBar healthBar;
+    
     public Label maxPowerUpsLabel;
 
     private void OnEnable()

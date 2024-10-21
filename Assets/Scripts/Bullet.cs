@@ -11,13 +11,12 @@ public class Bullet : MonoBehaviour
 {
     // Spawner script changes direction when bullet is spawned
     public Vector2 direction = Vector2.zero;
-    [SerializeField]
-    float moveSpeed = 3f;
-    [SerializeField]
-    AudioClip shootSound;
-    [SerializeField]
-    PlayerSaveData playerSaveData;
     Rigidbody2D rb;
+    [SerializeField] float moveSpeed = 3f;
+
+    [SerializeField] AudioClip shootSound;
+
+    [SerializeField] PlayerSaveData playerSaveData;
     void Start()
     {
         // Get the Rigidbody2D of this current instance of the bullet to be able to use physics movement

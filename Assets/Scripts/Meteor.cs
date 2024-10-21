@@ -10,15 +10,11 @@ using UnityEngine;
 // CPSC 386 Example02 Timer1.cs
 public class Meteor : MonoBehaviour
 {
-    [SerializeField]
-    AudioClip hitSound;
-    [SerializeField]
-    PlayerSaveData playerSaveData;
+    [SerializeField] AudioClip hitSound;
+    [SerializeField] PlayerSaveData playerSaveData;
+    [SerializeField] int meteorPoints = 5;
+    [SerializeField] float delay = 5f;
     float timer = 0;
-    [SerializeField]
-    float delay = 5f;
-    [SerializeField]
-    int meteorPoints = 5;
     GameUI UI;
     void Start()
     {

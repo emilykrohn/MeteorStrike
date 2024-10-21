@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // https://docs.unity3d.com/Manual/class-ScriptableObject.html (How to use a scriptable object)
+// https://docs.unity3d.com/2022.3/Documentation/ScriptReference/HeaderAttribute.html (Header Attribute)
 
 /// <summary>
 /// PlayerData Script is used to change the PlayerSaveData Scriptable Object data and store the current stats of the player
@@ -10,21 +11,23 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     [SerializeField] PlayerSaveData SaveData;
+    [Header("Max Stats")]
     [SerializeField] int maxHealth = 100;
     [SerializeField] int healthPowerUpAmount = 10;
-
-    GameUI gameUI;
+    public bool current_has_max_stats;
+    public bool current_has_max_power_ups;
 
     // Current lives the player has during the game
+    [Header("Current Stats")]
     public int current_health;
     public int current_points;
-    public int current_level;
     public int current_speed;
     public float current_fire_rate;
-    public bool current_has_max_power_ups;
+    [Header("Current Level")]
+    public int current_level;
     public int current_fire_rate_level;
     public int current_speed_level;
-    public bool current_has_max_stats;
+    GameUI gameUI;
 
     void Start()
     {

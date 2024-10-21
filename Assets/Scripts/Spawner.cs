@@ -4,26 +4,21 @@ using UnityEngine;
 
 // CPSC 386 Example02 Timer1.cs
 // CPSC 386 Example04 EnemyManager.cs (Spawn Radius)
+// https://docs.unity3d.com/2022.3/Documentation/ScriptReference/HeaderAttribute.html (Header Attribute)
 public class Spawner : MonoBehaviour
 {
     float meteorTimer = 0;
     float starTimer = 0;
-    [SerializeField]
-    GameObject meteor;
-    [SerializeField]
-    float meteorCoolDown = 1f;
-    [SerializeField]
-    float meteorSpawnRadius = 8f;
-    [SerializeField]
-    float meteorInnerRadius = 4f;
-    [SerializeField]
-    GameObject star;
-    [SerializeField]
-    float starCoolDown = 0.5f;
-    [SerializeField]
-    float starSpawnRadius = 8f;
-    [SerializeField]
-    float starInnerRadius = 4f;
+    [Header("Meteor")]
+    [SerializeField] GameObject meteor;
+    [SerializeField] float meteorCoolDown = 1f;
+    [SerializeField] float meteorSpawnRadius = 8f;
+    [SerializeField] float meteorInnerRadius = 4f;
+    [Header("Star")]
+    [SerializeField] GameObject star;
+    [SerializeField] float starCoolDown = 0.5f;
+    [SerializeField] float starSpawnRadius = 8f;
+    [SerializeField] float starInnerRadius = 4f;
 
     // Spawns in specified game object with inputed spawn radius and inner radius
     private void Spawn(GameObject obj, float spawnRadius, float innerRadius)
