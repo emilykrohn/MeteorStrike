@@ -9,10 +9,10 @@ using UnityEngine.InputSystem;
 // CPSC 386 Example02 Timer1.cs
 public class Shoot : MonoBehaviour
 {
+    [SerializeField] Bullet bulletPrefab;
     PlayerInput playerInput;
     PlayerData playerData;
-    [SerializeField]
-    Bullet bulletPrefab;
+    
     float shootCooldown;
     float shootTimer = 0f;
 

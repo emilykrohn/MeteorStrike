@@ -14,8 +14,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField]
-    PlayerSaveData saveData;
+    // UI Elements
     UIDocument UIDoc;
     Button resumeButton;
     Button settingsButton;
@@ -23,7 +22,9 @@ public class PauseMenu : MonoBehaviour
     Button mainMenuButton;
     Button quitButton;
 
+    [SerializeField] PlayerSaveData saveData;
     PlayerData playerData;
+
     AudioSource audioSource;
 
     // Start is called before the first frame update

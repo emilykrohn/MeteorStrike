@@ -8,10 +8,10 @@ using UnityEngine;
 // CPSC 386 Example04 Enemy.cs (Updating current position)
 public class MeteorMovement : MonoBehaviour
 {
-    GameObject player;
-    [SerializeField]
-    float moveSpeed = 5f;
+    [SerializeField] float moveSpeed = 5f;
     Vector3 direction;
+    
+    GameObject player;
 
     /* Getting the direction the meteor is going to move from in start
        so the meteor goes towards the player initially but don't keep following the player */

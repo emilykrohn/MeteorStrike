@@ -16,21 +16,24 @@ using UnityEngine.SceneManagement;
 
 public class Settings : MonoBehaviour
 {
-    UIDocument UIDoc;
-    [SerializeField]
-    PlayerSaveData playerSaveData;
+    [SerializeField] PlayerSaveData playerSaveData;
 
+    // UI Elements
+    UIDocument UIDoc;
     Slider musicVolumeSlider;
     Slider sfxVolumeSlider;
     Button backButton;
 
-    GameObject player;
-    PlayerData saveData;
+    // Audio Sources
     AudioSource buttonAudioSource;
     AudioSource music;
+    
+    GameObject player;
+    PlayerData saveData;
 
     void OnEnable()
     {
+        // Find Audio Sources in the game scene
         buttonAudioSource = GameObject.FindGameObjectWithTag("ButtonSound").GetComponent<AudioSource>();
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
 
@@ -67,12 +70,21 @@ public class Settings : MonoBehaviour
     // This is for the back button
     void LoadPreviousScene(ClickEvent evt)
     {
+        // Play button sound at current saved volume level
         buttonAudioSource.volume = playerSaveData.sfxVolume / 100;
         buttonAudioSource.Play();
+
+        // Play music at current saved volume level
         music.volume = playerSaveData.musicVolume / 100;
         music.Play();
+
+        // Destroy player game object
         Destroy(player);
+
+        // Save that the player has just closed the settings menu, this way the pause menu can open again if that was the previous menu
         playerSaveData.isSettingMenuOpened = true;
+
+        // Load previous menu
         SceneManager.LoadScene(playerSaveData.previousScene);
     }
 }

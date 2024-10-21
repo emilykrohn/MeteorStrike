@@ -10,9 +10,11 @@ using UnityEngine.SceneManagement;
 // https://docs.unity3d.com/ScriptReference/Application.Quit.html (Close the Application)
 public class GameOver : MonoBehaviour
 {
+    [SerializeField] PlayerSaveData playerSaveData;
+    
+    // UI Elements
     private Button restartButton;
     private Button quitButton;
-    [SerializeField] PlayerSaveData playerSaveData;
 
     private void OnEnable()
     {

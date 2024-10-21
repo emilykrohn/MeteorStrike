@@ -17,21 +17,22 @@ using UnityEngine.UIElements;
 
 public class PowerUpScreen : MonoBehaviour
 {
-    [SerializeField]
-    PlayerSaveData playerSaveData;
-    UIDocument UIDoc;
+    // Power up list
     List<string> powerUps = new List<string> {"Heal", "Speed", "Fire Rate"};
+
+    [SerializeField] PlayerSaveData playerSaveData;
+    PlayerData playerData;
+    
+    AudioSource audioSource;
+
+    // UI Elements
+    UIDocument UIDoc;
     Button button1;
     Button button2;
     Button button3;
-
     ProgressBar healthBar;
     ProgressBar speedBar;
     ProgressBar fireRateBar;
-
-    PlayerData playerData;
-
-    AudioSource audioSource;
 
     bool hasLoadedPowerUpScreen = false;
 

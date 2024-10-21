@@ -17,8 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     // https://www.youtube.com/watch?app=desktop&v=7NMsVub5NZM (Limits the player rigidbody velocity maginutude from being more than the maximum move speed)
 
-    [SerializeField]
-    PlayerInput playerInput;
+    [SerializeField] PlayerInput playerInput;
     InputAction moveAction;
     PlayerData playerData;
 

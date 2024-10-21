@@ -24,6 +24,7 @@ public class PlayerData : MonoBehaviour
     public int current_points;
     public int current_speed;
     public float current_fire_rate;
+    
     [Header("Current Level")]
     public int current_level;
     public int current_fire_rate_level;

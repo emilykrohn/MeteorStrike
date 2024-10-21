@@ -10,15 +10,14 @@ using UnityEngine;
 // https://discussions.unity.com/t/volume-of-audio-clip-is-too-loud/135791 (Audio Clip)
 public class Star : MonoBehaviour
 {
+    [SerializeField] AudioClip collectSound;
+    [SerializeField] PlayerSaveData playerSaveData;
+    [SerializeField] int starPoints = 3;
+    
     float timer = 0;
     float delay = 10;
+
     GameUI UI;
-    [SerializeField]
-    AudioClip collectSound;
-    [SerializeField]
-    PlayerSaveData playerSaveData;
-    [SerializeField]
-    int starPoints = 3;
 
     void Start()
     {
@@ -37,8 +36,9 @@ public class Star : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player"))
         {
+            // Play sound clip at current volume level
             AudioSource.PlayClipAtPoint(collectSound, transform.position, playerSaveData.sfxVolume / 100);
-            // Use function from the GameUI script
+            // Use function from the GameUI script to increase player points
             UI.IncreasePoints(starPoints);
             Destroy(gameObject);
         }

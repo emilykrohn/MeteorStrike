@@ -13,8 +13,10 @@ public class Meteor : MonoBehaviour
     [SerializeField] AudioClip hitSound;
     [SerializeField] PlayerSaveData playerSaveData;
     [SerializeField] int meteorPoints = 5;
+
     [SerializeField] float delay = 5f;
     float timer = 0;
+    
     GameUI UI;
     void Start()
     {

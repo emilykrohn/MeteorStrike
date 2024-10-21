@@ -9,11 +9,13 @@ public class Spawner : MonoBehaviour
 {
     float meteorTimer = 0;
     float starTimer = 0;
+
     [Header("Meteor")]
     [SerializeField] GameObject meteor;
     [SerializeField] float meteorCoolDown = 1f;
     [SerializeField] float meteorSpawnRadius = 8f;
     [SerializeField] float meteorInnerRadius = 4f;
+
     [Header("Star")]
     [SerializeField] GameObject star;
     [SerializeField] float starCoolDown = 0.5f;

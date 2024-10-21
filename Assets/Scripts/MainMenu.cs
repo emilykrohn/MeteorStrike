@@ -16,19 +16,23 @@ using UnityEngine.InputSystem;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] PlayerSaveData playerSaveData;
+    PlayerInput playerInput;
+    
+    PlayerMovement playerMovement;
+    Spawner spawner;
+    Shoot shoot;
+
+    // Audio Sources
     AudioSource buttonAudioSource;
     AudioSource music;
+
+    // UI Elements
     private Button newGameButton;
     private Button loadGameButton;
     private Button settingsButton;
     private Button quitButton;
     public bool isLoadGame = true;
 
-    PlayerInput playerInput;
-    Spawner spawner;
-    PlayerMovement playerMovement;
-    Shoot shoot;
-    PlayerData player;
 
     private void OnEnable()
     {
@@ -37,8 +41,6 @@ public class MainMenu : MonoBehaviour
 
         buttonAudioSource = GameObject.FindGameObjectWithTag("ButtonSound").GetComponent<AudioSource>();
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
-
-        player = FindObjectOfType<PlayerData>();
 
         playerInput = FindObjectOfType<PlayerInput>();
         spawner = FindObjectOfType<Spawner>();

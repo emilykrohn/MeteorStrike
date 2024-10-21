@@ -16,6 +16,7 @@ public class GameUI : MonoBehaviour
 
     [SerializeField] AudioClip levelUpSound;
 
+    // UI
     PowerUpScreen powerUpScreen;
     ProgressBar pointsBar;
     ProgressBar healthBar;
