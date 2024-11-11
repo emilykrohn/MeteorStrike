@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using System;
+using System.IO;
 
 // CPSC 386 Example04 SceneSwitcher.cs (LoadScene())
 // https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html (LoadScene())
@@ -13,7 +14,7 @@ public class GameUI : MonoBehaviour
 {
     [SerializeField] PlayerSaveData playerSaveData;
     PlayerData playerData;
-    [SerializeField] SaveData saveData;
+    SaveData saveData;
 
     [SerializeField] AudioClip levelUpSound;
 
@@ -37,7 +38,9 @@ public class GameUI : MonoBehaviour
         }
         else
         {
-            playerData.LoadStats(saveData.saveObject);
+            string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
+            saveData = JsonUtility.FromJson<SaveData>(saveString);
+            playerData.LoadStats(saveData);
         }
 
         // Find UI Document on game object

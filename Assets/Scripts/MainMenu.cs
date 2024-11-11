@@ -82,8 +82,6 @@ public class MainMenu : MonoBehaviour
     {
         try
         {
-            string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
-            saveData.saveObject = JsonUtility.FromJson<SaveData>(saveString);
             playerSaveData.isLoadGame = true;
             SceneManager.LoadScene("Game");
         }
