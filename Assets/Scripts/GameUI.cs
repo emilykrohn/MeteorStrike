@@ -13,6 +13,7 @@ public class GameUI : MonoBehaviour
 {
     [SerializeField] PlayerSaveData playerSaveData;
     PlayerData playerData;
+    [SerializeField] SaveData saveData;
 
     [SerializeField] AudioClip levelUpSound;
 
@@ -22,6 +23,7 @@ public class GameUI : MonoBehaviour
     ProgressBar healthBar;
     
     public Label maxPowerUpsLabel;
+    
 
     private void OnEnable()
     {
@@ -32,6 +34,10 @@ public class GameUI : MonoBehaviour
         if (!playerSaveData.isLoadGame)
         {
             playerData.ResetStats();
+        }
+        else
+        {
+            playerData.LoadStats(saveData.saveObject);
         }
 
         // Find UI Document on game object

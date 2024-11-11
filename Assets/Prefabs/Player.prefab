@@ -264,7 +264,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SaveData: {fileID: 11400000, guid: 6ac10f8547ef5894aaf3a6ba2bf6db34, type: 2}
   ResetData: {fileID: 11400000, guid: 0311049be709281459a67ed4b5efac2c, type: 2}
-  maxHealth: 100
   healthPowerUpAmount: 10
   current_has_max_stats: 0
   current_has_max_power_ups: 0

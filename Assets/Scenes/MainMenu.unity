@@ -576,6 +576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSaveData: {fileID: 11400000, guid: 6ac10f8547ef5894aaf3a6ba2bf6db34, type: 2}
+  playerData: {fileID: 2886508766588024674, guid: b7e60e6cb86212f44b9cea69a8df6cdd, type: 3}
   isLoadGame: 1
 --- !u!1001 &5731694443772268643
 PrefabInstance:

@@ -5,7 +5,6 @@ using UnityEngine;
 // https://docs.unity3d.com/Manual/class-ScriptableObject.html (How to use a scriptable object)
 // https://docs.unity3d.com/2022.3/Documentation/ScriptReference/HeaderAttribute.html (Header attribute)
 [CreateAssetMenu(fileName = "SaveData", menuName = "ScriptableObjects/PlayerSaveData", order = 1)]
-[System.Serializable]
 
 // PlayerSaveData Scriptable Object is used to save and load player data
 public class PlayerSaveData : ScriptableObject

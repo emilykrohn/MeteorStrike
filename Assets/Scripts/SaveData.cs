@@ -32,4 +32,6 @@ public class SaveData
     public bool isLoadGame = false;
     public bool isSettingMenuOpened = false;
     public bool hasMaxStats = false;
+
+    public SaveData saveObject;
 }

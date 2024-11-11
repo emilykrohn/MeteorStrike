@@ -21,7 +21,8 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] PlayerSaveData playerSaveData;
     PlayerInput playerInput;
-    PlayerData playerData;
+    [SerializeField] PlayerData playerData;
+    [SerializeField] SaveData saveData;
     
     PlayerMovement playerMovement;
     Spawner spawner;
@@ -37,7 +38,6 @@ public class MainMenu : MonoBehaviour
     private Button settingsButton;
     private Button quitButton;
     public bool isLoadGame = true;
-
 
     private void OnEnable()
     {
@@ -83,29 +83,26 @@ public class MainMenu : MonoBehaviour
         try
         {
             string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
-            SaveData saveObject = JsonUtility.FromJson<SaveData>(saveString);
-            playerData.LoadStats(saveObject);
+            saveData.saveObject = JsonUtility.FromJson<SaveData>(saveString);
             playerSaveData.isLoadGame = true;
-            Debug.Log(saveString);
+            SceneManager.LoadScene("Game");
         }
-        catch(Exception ex)
+        catch
         {
-            Debug.Log(ex);
+            SceneManager.LoadScene("Game");
             playerSaveData.isLoadGame = false;
         }
-        Debug.Log("test");
         buttonAudioSource.volume = playerSaveData.sfxVolume / 100;
         buttonAudioSource.Play();
-        // When start button clicked, load Game scene
-        SceneManager.LoadScene("Game");
         playerSaveData.previousScene = "Game";
-
+        Debug.Log("TEST");
 
         playerInput.enabled = true;
         Debug.Log(playerInput.enabled);
         spawner.enabled = true;
         playerMovement.enabled = true;
         shoot.enabled = true;
+        // When start button clicked, load Game scene
     }
 
     /// <summary>
