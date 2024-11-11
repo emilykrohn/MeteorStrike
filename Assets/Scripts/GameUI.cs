@@ -38,9 +38,16 @@ public class GameUI : MonoBehaviour
         }
         else
         {
-            string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
-            saveData = JsonUtility.FromJson<SaveData>(saveString);
-            playerData.LoadStats(saveData);
+            try
+            {
+                string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
+                saveData = JsonUtility.FromJson<SaveData>(saveString);
+                playerData.LoadStats(saveData);
+            }
+            catch
+            {
+                playerData.ResetStats();
+            }
         }
 
         // Find UI Document on game object

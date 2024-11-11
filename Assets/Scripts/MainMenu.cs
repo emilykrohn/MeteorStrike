@@ -93,10 +93,8 @@ public class MainMenu : MonoBehaviour
         buttonAudioSource.volume = playerSaveData.sfxVolume / 100;
         buttonAudioSource.Play();
         playerSaveData.previousScene = "Game";
-        Debug.Log("TEST");
 
         playerInput.enabled = true;
-        Debug.Log(playerInput.enabled);
         spawner.enabled = true;
         playerMovement.enabled = true;
         shoot.enabled = true;

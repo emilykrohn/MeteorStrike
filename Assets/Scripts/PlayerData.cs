@@ -82,8 +82,6 @@ public class PlayerData : MonoBehaviour
         // Stats
         SaveData.health = saveObject.health;
         current_health = saveObject.health;
-        Debug.Log(SaveData.health.ToString() + "loadstats");
-        Debug.Log(current_health.ToString() + " LoadStats: " + saveObject.health.ToString());
 
         current_speed = saveObject.speed;
         SaveData.speed = saveObject.speed;
