@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using System.IO;
+using System;
 
 // CPSC 386 Example04 SceneSwitcher.cs (LoadScene())
 // https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html (LoadScene())
@@ -13,10 +15,13 @@ using UnityEngine.InputSystem;
 // https://stackoverflow.com/questions/52406605/how-can-i-access-an-objects-components-from-a-different-scene (DontDestroyOnLoad and FindObjectWithTag)
 // https://stackoverflow.com/questions/71119026/unity-enable-disable-component-script-from-component-on-same-gameobject (enable components)
 
+// https://www.youtube.com/watch?v=6uMFEM-napE (How to load JSON data)
+
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] PlayerSaveData playerSaveData;
     PlayerInput playerInput;
+    PlayerData playerData;
     
     PlayerMovement playerMovement;
     Spawner spawner;
@@ -43,6 +48,7 @@ public class MainMenu : MonoBehaviour
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
 
         playerInput = FindObjectOfType<PlayerInput>();
+        playerData = FindObjectOfType<PlayerData>();
         spawner = FindObjectOfType<Spawner>();
         playerMovement = FindObjectOfType<PlayerMovement>();
         shoot = FindObjectOfType<Shoot>();
@@ -74,14 +80,29 @@ public class MainMenu : MonoBehaviour
     /// <param name="evt"></param>
     private void LoadGame(ClickEvent evt)
     {
+        try
+        {
+            string saveString = File.ReadAllText(Application.dataPath + "/save.txt");
+            SaveData saveObject = JsonUtility.FromJson<SaveData>(saveString);
+            playerData.LoadStats(saveObject);
+            playerSaveData.isLoadGame = true;
+            Debug.Log(saveString);
+        }
+        catch(Exception ex)
+        {
+            Debug.Log(ex);
+            playerSaveData.isLoadGame = false;
+        }
+        Debug.Log("test");
         buttonAudioSource.volume = playerSaveData.sfxVolume / 100;
         buttonAudioSource.Play();
         // When start button clicked, load Game scene
         SceneManager.LoadScene("Game");
         playerSaveData.previousScene = "Game";
-        playerSaveData.isLoadGame = true;
+
 
         playerInput.enabled = true;
+        Debug.Log(playerInput.enabled);
         spawner.enabled = true;
         playerMovement.enabled = true;
         shoot.enabled = true;

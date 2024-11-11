@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 // https://docs.unity3d.com/ScriptReference/Input.GetKeyDown.html (Check if esc key is pressed)
 // https://gamedevbeginner.com/the-right-way-to-pause-the-game-in-unity/ (Pause game when menu open)
@@ -11,6 +12,8 @@ using UnityEngine.SceneManagement;
 // https://stackoverflow.com/questions/30310847/gameobject-findobjectoftype-vs-getcomponent (FindGameObjectWithTag)
 // https://stackoverflow.com/questions/52406605/how-can-i-access-an-objects-components-from-a-different-scene (DontDestroyOnLoad and FindObjectWithTag)
 // https://docs.unity3d.com/ScriptReference/Application.Quit.html (Close Application)
+
+// https://www.youtube.com/watch?v=6uMFEM-napE (How to save to JSON file)
 
 public class PauseMenu : MonoBehaviour
 {
@@ -88,6 +91,9 @@ public class PauseMenu : MonoBehaviour
         audioSource.volume = saveData.sfxVolume / 100;
         audioSource.Play();
         playerData.SaveStats();
+
+        string json = JsonUtility.ToJson(saveData);
+        File.WriteAllText(Application.dataPath + "/save.txt", json);
     }
 
     /// <summary>

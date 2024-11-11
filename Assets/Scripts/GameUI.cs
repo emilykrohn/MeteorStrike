@@ -29,12 +29,7 @@ public class GameUI : MonoBehaviour
         powerUpScreen = FindAnyObjectByType<PowerUpScreen>();
 
         // If the player choose the load game option, it loads that game stats from the PlayerSaveData
-        if (playerSaveData.isLoadGame)
-        {
-            playerData.LoadStats();
-        }
-        // Else the game data is reset
-        else
+        if (!playerSaveData.isLoadGame)
         {
             playerData.ResetStats();
         }

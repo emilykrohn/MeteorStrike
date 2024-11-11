@@ -77,24 +77,39 @@ public class PlayerData : MonoBehaviour
     /// <summary>
     /// Loads the player's stats from the PlayerSaveData Scriptable Object
     /// </summary>
-    public void LoadStats()
+    public void LoadStats(SaveData saveObject)
     {
         // Stats
-        current_health = SaveData.health;
-        current_speed = SaveData.speed;
-        current_fire_rate = SaveData.fireRate;
-        
+        SaveData.health = saveObject.health;
+        current_health = saveObject.health;
+
+        current_speed = saveObject.speed;
+        SaveData.speed = saveObject.speed;
+
+        current_fire_rate = saveObject.fireRate;
+        SaveData.fireRate = saveObject.fireRate;
+
         // Points
-        current_points = SaveData.points;
+        SaveData.points = saveObject.points;
+        current_points = saveObject.points;
+
+        SaveData.pointsGoal = saveObject.pointsGoal;
+
+        // Levels
+        current_fire_rate_level = saveObject.fireRateLevel;
+        SaveData.fireRateLevel = saveObject.fireRateLevel;
+
+        current_speed_level = saveObject.speedLevel;
+        SaveData.speedLevel = saveObject.speedLevel;
         
-        // Level
-        current_level = SaveData.level;
-        current_fire_rate_level = SaveData.fireRateLevel;
-        current_speed_level = SaveData.speedLevel;
+        SaveData.level = saveObject.level;
+        current_level = saveObject.level;
 
         // Max Stats/Power ups
-        current_has_max_stats = SaveData.hasMaxStats;
-        current_has_max_power_ups = SaveData.hasMaxPowerUps;
+        SaveData.hasMaxStats = saveObject.hasMaxStats;
+        current_has_max_stats = saveObject.hasMaxStats;
+        
+        SaveData.hasMaxPowerUps = saveObject.hasMaxPowerUps;
     }
 
     /// <summary>
