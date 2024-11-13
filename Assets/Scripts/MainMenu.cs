@@ -35,6 +35,7 @@ public class MainMenu : MonoBehaviour
     // UI Elements
     private Button newGameButton;
     private Button loadGameButton;
+    private Button controlsButton;
     private Button settingsButton;
     private Button quitButton;
     public bool isLoadGame = true;
@@ -64,12 +65,14 @@ public class MainMenu : MonoBehaviour
         // Find buttons in UI Document as Buttons
         newGameButton = UIDoc.rootVisualElement.Q("NewGameButton") as Button;
         loadGameButton = UIDoc.rootVisualElement.Q("LoadGameButton") as Button;
+        controlsButton = UIDoc.rootVisualElement.Q("ControlsButton") as Button;
         settingsButton = UIDoc.rootVisualElement.Q("SettingsButton") as Button;
         quitButton = UIDoc.rootVisualElement.Q("QuitButton") as Button;
 
         // Call start / quit game functions when buttons are clicked
         newGameButton.RegisterCallback<ClickEvent>(NewGame);
         loadGameButton.RegisterCallback<ClickEvent>(LoadGame);
+        controlsButton.RegisterCallback<ClickEvent>(ControlsMenu);
         settingsButton.RegisterCallback<ClickEvent>(SettingsMenu);
         quitButton.RegisterCallback<ClickEvent>(QuitGame);
     }
@@ -99,6 +102,13 @@ public class MainMenu : MonoBehaviour
         playerMovement.enabled = true;
         shoot.enabled = true;
         // When start button clicked, load Game scene
+    }
+
+    private void ControlsMenu(ClickEvent evt)
+    {
+        buttonAudioSource.volume = playerSaveData.sfxVolume / 100;
+        buttonAudioSource.Play();
+        SceneManager.LoadScene("ControlsMenu");
     }
 
     /// <summary>
