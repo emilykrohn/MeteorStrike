@@ -23,5 +23,12 @@ public class EnemyShipMovement : MonoBehaviour
 
         // Update Enemy ship's position
         transform.position += direction * moveSpeed * Time.deltaTime;
+
+        /* Since we have the vector pointing at the player, this give us
+           (x, y) where x is the horizontal part of the triangle and y is the 
+           vertical part of the triangle. We can use tan to find the degrees
+           the player need to rotate to face the mouse */
+        float rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, rotation - 90);
     }
 }
