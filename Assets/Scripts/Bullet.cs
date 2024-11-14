@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         // When the bullet hits a meteor or border, this current instance of the bullet gets destroyed
-        if (other.CompareTag("Meteor") || other.CompareTag("Border"))
+        if (other.CompareTag("Meteor") || other.CompareTag("Border") || other.CompareTag("EnemyShip"))
         {
             Destroy(gameObject);
         }
