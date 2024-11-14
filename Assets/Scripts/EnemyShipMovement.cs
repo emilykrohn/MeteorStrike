@@ -7,12 +7,15 @@ public class EnemyShipMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
     GameObject player;
 
-    void Update()
+    void Start()
     {
         // Find player Game Object
         player = GameObject.FindGameObjectWithTag("Player");
-        
-        /* Subtracting target position (player) from the current position (meteor)
+    }
+
+    void Update()
+    {
+        /* Subtracting target position (player) from the current position (enemyship)
            gives a vector pointing from the meteor to the player */
         Vector3 direction = player.transform.position - transform.position;
 
