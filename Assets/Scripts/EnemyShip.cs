@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// CPSC 386 Example03 Player.cs (OnTriggerEnter2D)
+// CPSC 386 Example04 Enemy.cs (FindObjectOfType)
+// https://docs.unity3d.com/ScriptReference/Component.CompareTag.html (CompareTag)
+// CPSC 386 Example02 Timer1.cs
 public class EnemyShip : MonoBehaviour
 {
     [SerializeField] int enemyHealth = 3;

@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     // https://gamedevbeginner.com/input-in-unity-made-easy-complete-guide-to-the-new-system/ (How to use New Unity Input System)
     // https://docs.unity3d.com/Packages/com.unity.inputsystem@1.7/manual/Actions.html#polling-actions
-    // https://discussions.unity.com/t/lookat-2d-equivalent/88118
+    // https://discussions.unity.com/t/lookat-2d-equivalent/88118 (rotation)
     // CPSC386 Example02 InputExample.cs (New Unity Input System)
     // CPSC386 Example04 Player.cs (MovePosition)
 

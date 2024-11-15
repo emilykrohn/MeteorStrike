@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// https://www.youtube.com/watch?v=6uMFEM-napE (How to save to JSON file)
 public class SaveData
 {
     [Header("Stats")]

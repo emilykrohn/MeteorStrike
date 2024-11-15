@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// https://docs.unity3d.com/ScriptReference/Rigidbody-velocity.html (velocity)
+// CPSC 396 Example03 Player.cs (OnTriggerEnter2D)
+// https://docs.unity3d.com/ScriptReference/Component.CompareTag.html (CompareTag)
+// https://www.youtube.com/watch?app=desktop&v=7NMsVub5NZM (Limits the bullet rigidbody velocity maginutude from being more than the maximum move speed)
+// https://discussions.unity.com/t/volume-of-audio-clip-is-too-loud/135791 (Audio Clip)
 public class EnemyShipBullet : MonoBehaviour
 {
     public Vector2 direction = Vector2.zero;

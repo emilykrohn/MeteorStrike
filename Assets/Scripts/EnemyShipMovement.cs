@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// https://discussions.unity.com/t/lookat-2d-equivalent/88118 (rotation)
+// https://docs.unity3d.com/ScriptReference/Vector3.Normalize.html (Normalize)
+// CPSC 386 Example04 Enemy.cs (Updating current position)
 public class EnemyShipMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;

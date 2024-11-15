@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
+// https://docs.unity3d.com/ScriptReference/Vector3.Normalize.html (Normalize)
+// CPSC 386 Example04 Enemy.cs (Updating current position)
 public class ChargeShipMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
