@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4917266080056347204}
   - component: {fileID: 1724817643710665713}
   - component: {fileID: 161078205928177135}
-  - component: {fileID: 3757555806627194039}
-  - component: {fileID: 7348244793632240736}
+  - component: {fileID: 1614482521761051017}
+  - component: {fileID: 2694651756061796664}
   m_Layer: 9
-  m_Name: EnemyShip
+  m_Name: ChargeShip
   m_TagString: EnemyShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: caccf653ac9850642ba72e9a369f937b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8358456, g: 0.32872015, b: 0.8396226, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -132,7 +132,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2951253, y: 0.42143157}
   m_EdgeRadius: 0
---- !u!114 &3757555806627194039
+--- !u!114 &1614482521761051017
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,16 +141,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8948826400499913191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3d068f37f0576b4da2219470a42d8df, type: 3}
+  m_Script: {fileID: 11500000, guid: a957c396e480424419132be0e04d585d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 3
   damageCooldown: 1
-  shootCooldown: 2
   hitSound: {fileID: 8300000, guid: d59a41f58ebe7f848878c89fc25c8c5d, type: 3}
   playerSaveData: {fileID: 11400000, guid: 6ac10f8547ef5894aaf3a6ba2bf6db34, type: 2}
-  enemyShipBullet: {fileID: 1480787536413410468, guid: df56d4726aaabf34b9fd626d555d80da, type: 3}
---- !u!114 &7348244793632240736
+  isPlayerTriggered: 0
+--- !u!114 &2694651756061796664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,7 +158,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8948826400499913191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 873ce162aea5d4644a87b044daa9b1a1, type: 3}
+  m_Script: {fileID: 11500000, guid: fb227ae1c4f38fd429de1c3e46ed23b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 4
+  chargeCooldown: 2
+  chargeLengthCooldown: 1.5
+  chargeSpeed: 4

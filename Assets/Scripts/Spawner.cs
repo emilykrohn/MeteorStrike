@@ -7,8 +7,11 @@ using UnityEngine;
 // https://docs.unity3d.com/2022.3/Documentation/ScriptReference/HeaderAttribute.html (Header Attribute)
 public class Spawner : MonoBehaviour
 {
+    PlayerData player;
     float meteorTimer = 0;
     float starTimer = 0;
+    float enemyShipTimer = 0;
+    float chargeShipTimer = 0;
 
     [Header("Meteor")]
     [SerializeField] GameObject meteor;
@@ -16,11 +19,28 @@ public class Spawner : MonoBehaviour
     [SerializeField] float meteorSpawnRadius = 8f;
     [SerializeField] float meteorInnerRadius = 4f;
 
+    [Header("EnemyShip")]
+    [SerializeField] GameObject enemyShip;
+    [SerializeField] float enemyShipCoolDown = 1f;
+    [SerializeField] float enemyShipSpawnRadius = 8f;
+    [SerializeField] float enemyShipInnerRadius = 4f;
+
+    [Header("ChargeShip")]
+    [SerializeField] GameObject chargeShip;
+    [SerializeField] float chargeShipCoolDown = 1f;
+    [SerializeField] float chargeShipSpawnRadius = 8f;
+    [SerializeField] float chargeShipInnerRadius = 4f;
+
     [Header("Star")]
     [SerializeField] GameObject star;
     [SerializeField] float starCoolDown = 0.5f;
     [SerializeField] float starSpawnRadius = 8f;
     [SerializeField] float starInnerRadius = 4f;
+
+    void Start()
+    {
+        player = GetComponent<PlayerData>();
+    }
 
     // Spawns in specified game object with inputed spawn radius and inner radius
     private void Spawn(GameObject obj, float spawnRadius, float innerRadius)
@@ -53,6 +73,9 @@ public class Spawner : MonoBehaviour
     {
         meteorTimer += Time.deltaTime;
         starTimer += Time.deltaTime;
+        enemyShipTimer += Time.deltaTime;
+        chargeShipTimer += Time.deltaTime;
+        
         if (meteorTimer > meteorCoolDown)
         {
             Spawn(meteor, meteorSpawnRadius, meteorInnerRadius);
@@ -62,6 +85,16 @@ public class Spawner : MonoBehaviour
         {
             Spawn(star, starSpawnRadius, starInnerRadius);
             starTimer = 0;
+        }
+        if (enemyShipTimer > enemyShipCoolDown && player.current_level >= 2)
+        {
+            Spawn(enemyShip, enemyShipSpawnRadius, enemyShipInnerRadius);
+            enemyShipTimer = 0;
+        }
+        if (chargeShipTimer > chargeShipCoolDown && player.current_level >= 4)
+        {
+            Spawn(chargeShip, chargeShipSpawnRadius, chargeShipInnerRadius);
+            chargeShipTimer = 0;
         }
     }
 }

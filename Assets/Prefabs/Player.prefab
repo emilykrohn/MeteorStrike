@@ -219,6 +219,14 @@ MonoBehaviour:
   meteorCoolDown: 1.5
   meteorSpawnRadius: 10
   meteorInnerRadius: 8
+  enemyShip: {fileID: 8948826400499913191, guid: 09cef238bb8c86140aefef756e923eeb, type: 3}
+  enemyShipCoolDown: 10
+  enemyShipSpawnRadius: 10
+  enemyShipInnerRadius: 8
+  chargeShip: {fileID: 8948826400499913191, guid: 2f4eabb100a00694db5f0231f31bf91e, type: 3}
+  chargeShipCoolDown: 10
+  chargeShipSpawnRadius: 10
+  chargeShipInnerRadius: 8
   star: {fileID: 5002295005032699545, guid: 5f44857cb6346ff4d9602d444e8f7bd2, type: 3}
   starCoolDown: 2
   starSpawnRadius: 6
