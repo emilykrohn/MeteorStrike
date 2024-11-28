@@ -171,5 +171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitSound: {fileID: 8300000, guid: d59a41f58ebe7f848878c89fc25c8c5d, type: 3}
   playerSaveData: {fileID: 11400000, guid: 6ac10f8547ef5894aaf3a6ba2bf6db34, type: 2}
-  delay: 15
   meteorPoints: 5
+  delay: 15
+  explosion: {fileID: 5050302429842943875, guid: 6147057a56eb6b744a5d8d9c17165280, type: 3}

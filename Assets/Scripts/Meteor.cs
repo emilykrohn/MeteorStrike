@@ -15,6 +15,7 @@ public class Meteor : MonoBehaviour
     [SerializeField] int meteorPoints = 5;
 
     [SerializeField] float delay = 5f;
+    [SerializeField] ParticleSystem explosion;
     float timer = 0;
     
     GameUI UI;
@@ -47,6 +48,7 @@ public class Meteor : MonoBehaviour
 
         if (other.CompareTag("Bullet"))
         {
+            Instantiate(explosion, transform.position, transform.rotation);
             UI.IncreasePoints(meteorPoints);
             // Play hit sound
             AudioSource.PlayClipAtPoint(hitSound, transform.position, playerSaveData.sfxVolume / 100);
