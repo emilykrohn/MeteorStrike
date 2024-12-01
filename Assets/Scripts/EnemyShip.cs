@@ -14,6 +14,7 @@ public class EnemyShip : MonoBehaviour
     [SerializeField] AudioClip hitSound;
     [SerializeField] PlayerSaveData playerSaveData;
     [SerializeField] EnemyShipBullet enemyShipBullet;
+    [SerializeField] ParticleSystem explosion;
     bool isPlayerTriggered = false;
     Vector3 direction;
     float damageTimer = 0;
@@ -65,6 +66,7 @@ public class EnemyShip : MonoBehaviour
             enemyHealth -= 1;
             if (enemyHealth == 0)
             {
+                Instantiate(explosion, transform.position, transform.rotation);
                 AudioSource.PlayClipAtPoint(hitSound, transform.position, playerSaveData.sfxVolume / 100);
                 Destroy(gameObject);
             }

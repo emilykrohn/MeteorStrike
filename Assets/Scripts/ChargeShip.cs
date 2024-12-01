@@ -12,6 +12,7 @@ public class ChargeShip : MonoBehaviour
     [SerializeField] float damageCooldown = 1f;
     [SerializeField] AudioClip hitSound;
     [SerializeField] PlayerSaveData playerSaveData;
+    [SerializeField] ParticleSystem explosion;
     public bool isPlayerTriggered = false;
     Vector3 direction;
     float damageTimer = 0;
@@ -55,6 +56,7 @@ public class ChargeShip : MonoBehaviour
             enemyHealth -= 1;
             if (enemyHealth == 0)
             {
+                Instantiate(explosion, transform.position, transform.rotation);
                 AudioSource.PlayClipAtPoint(hitSound, transform.position, playerSaveData.sfxVolume / 100);
                 Destroy(gameObject);
             }

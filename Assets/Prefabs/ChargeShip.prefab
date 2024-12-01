@@ -148,6 +148,7 @@ MonoBehaviour:
   damageCooldown: 1
   hitSound: {fileID: 8300000, guid: d59a41f58ebe7f848878c89fc25c8c5d, type: 3}
   playerSaveData: {fileID: 11400000, guid: 6ac10f8547ef5894aaf3a6ba2bf6db34, type: 2}
+  explosion: {fileID: 5050302429842943875, guid: 6147057a56eb6b744a5d8d9c17165280, type: 3}
   isPlayerTriggered: 0
 --- !u!114 &2694651756061796664
 MonoBehaviour:
@@ -161,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb227ae1c4f38fd429de1c3e46ed23b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 2
   chargeCooldown: 2
   chargeLengthCooldown: 1.5
   chargeSpeed: 4

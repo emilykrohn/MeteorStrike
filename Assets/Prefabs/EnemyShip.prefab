@@ -150,6 +150,7 @@ MonoBehaviour:
   hitSound: {fileID: 8300000, guid: d59a41f58ebe7f848878c89fc25c8c5d, type: 3}
   playerSaveData: {fileID: 11400000, guid: 6ac10f8547ef5894aaf3a6ba2bf6db34, type: 2}
   enemyShipBullet: {fileID: 1480787536413410468, guid: df56d4726aaabf34b9fd626d555d80da, type: 3}
+  explosion: {fileID: 5050302429842943875, guid: 6147057a56eb6b744a5d8d9c17165280, type: 3}
 --- !u!114 &7348244793632240736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,4 +163,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873ce162aea5d4644a87b044daa9b1a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 1.5
