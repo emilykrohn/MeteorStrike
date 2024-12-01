@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour
     PlayerData player;
     float meteorTimer = 0;
     float starTimer = 0;
+    float basicEnemyShipTimer = 0;
     float enemyShipTimer = 0;
     float chargeShipTimer = 0;
 
@@ -18,6 +19,12 @@ public class Spawner : MonoBehaviour
     [SerializeField] float meteorCoolDown = 1f;
     [SerializeField] float meteorSpawnRadius = 8f;
     [SerializeField] float meteorInnerRadius = 4f;
+
+    [Header("BasicEnemyShip")]
+    [SerializeField] GameObject basicEnemyShip;
+    [SerializeField] float basicEnemyShipCoolDown = 1f;
+    [SerializeField] float basicEnemyShipSpawnRadius = 8f;
+    [SerializeField] float basicEnemyShipInnerRadius = 4f;
 
     [Header("EnemyShip")]
     [SerializeField] GameObject enemyShip;
@@ -73,6 +80,7 @@ public class Spawner : MonoBehaviour
     {
         meteorTimer += Time.deltaTime;
         starTimer += Time.deltaTime;
+        basicEnemyShipTimer += Time.deltaTime;
         enemyShipTimer += Time.deltaTime;
         chargeShipTimer += Time.deltaTime;
         
@@ -85,6 +93,11 @@ public class Spawner : MonoBehaviour
         {
             Spawn(star, starSpawnRadius, starInnerRadius);
             starTimer = 0;
+        }
+        if (basicEnemyShipTimer > basicEnemyShipCoolDown && player.current_level >= 1)
+        {
+            Spawn(basicEnemyShip, basicEnemyShipSpawnRadius, basicEnemyShipInnerRadius);
+            basicEnemyShipTimer = 0;
         }
         if (enemyShipTimer > enemyShipCoolDown && player.current_level >= 2)
         {

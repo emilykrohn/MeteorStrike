@@ -966,6 +966,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 150158017233302264, guid: b7e60e6cb86212f44b9cea69a8df6cdd, type: 3}
+      propertyPath: basicEnemyShip
+      value: 
+      objectReference: {fileID: 7988424406068765758, guid: 091bc891ea016c044a817ab65331fefb, type: 3}
+    - target: {fileID: 150158017233302264, guid: b7e60e6cb86212f44b9cea69a8df6cdd, type: 3}
+      propertyPath: basicEnemyShipCoolDown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 150158017233302264, guid: b7e60e6cb86212f44b9cea69a8df6cdd, type: 3}
+      propertyPath: basicEnemyShipSpawnRadius
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 876881291937096781, guid: b7e60e6cb86212f44b9cea69a8df6cdd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
