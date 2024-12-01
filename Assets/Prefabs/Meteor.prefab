@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 868563244903573410}
   - component: {fileID: 4675220271998688184}
   - component: {fileID: 2492444771582977124}
+  - component: {fileID: 9018717783991145818}
   m_Layer: 7
   m_Name: Meteor
   m_TagString: Meteor
@@ -174,3 +175,36 @@ MonoBehaviour:
   meteorPoints: 5
   delay: 15
   explosion: {fileID: 5050302429842943875, guid: 6147057a56eb6b744a5d8d9c17165280, type: 3}
+--- !u!114 &9018717783991145818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447841841024638471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.2538705, y: -0.007387638, z: 0}
+  - {x: -0.16669977, y: 0.17571741, z: 0}
+  - {x: 0.02542305, y: 0.26589406, z: 0}
+  - {x: 0.19237685, y: 0.15330023, z: 0}
+  - {x: 0.25387043, y: -0.03744656, z: 0}
+  - {x: 0, y: -0.240471, z: 0}
+  - {x: -0.15630615, y: -0.17133561, z: 0}
+  m_ShapePathHash: -1755839535
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -101754
+  m_LocalBounds:
+    m_Center: {x: -0.000000029802322, y: 0.012711525, z: 0}
+    m_Extent: {x: 0.25387046, y: 0.25318253, z: 0}

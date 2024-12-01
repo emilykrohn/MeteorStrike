@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 161078205928177135}
   - component: {fileID: 1614482521761051017}
   - component: {fileID: 2694651756061796664}
+  - component: {fileID: 3704237908306716824}
   m_Layer: 9
   m_Name: ChargeShip
   m_TagString: EnemyShip
@@ -166,3 +167,33 @@ MonoBehaviour:
   chargeCooldown: 2
   chargeLengthCooldown: 1.5
   chargeSpeed: 4
+--- !u!114 &3704237908306716824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948826400499913191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: 0.0006279837, y: -0.24986261, z: 0}
+  - {x: -0.16970558, y: -0.15693402, z: 0}
+  - {x: 0.005383759, y: 0.25787836, z: 0}
+  - {x: 0.17972532, y: -0.1656978, z: 0}
+  m_ShapePathHash: 52842970
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -98790
+  m_LocalBounds:
+    m_Center: {x: 0.0050098747, y: 0.004007876, z: 0}
+    m_Extent: {x: 0.17471546, y: 0.2538705, z: 0}

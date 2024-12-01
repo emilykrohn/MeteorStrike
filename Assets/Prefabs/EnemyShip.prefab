@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 161078205928177135}
   - component: {fileID: 3757555806627194039}
   - component: {fileID: 7348244793632240736}
+  - component: {fileID: 5721020472079661097}
   m_Layer: 9
   m_Name: EnemyShip
   m_TagString: EnemyShip
@@ -164,3 +165,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
+--- !u!114 &5721020472079661097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948826400499913191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: 0.006639759, y: -0.25186652, z: 0}
+  - {x: -0.1677017, y: -0.15893807, z: 0}
+  - {x: 0.0033798616, y: 0.2618862, z: 0}
+  - {x: 0.17170958, y: -0.16569778, z: 0}
+  m_ShapePathHash: 1224440358
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -100346
+  m_LocalBounds:
+    m_Center: {x: 0.002003938, y: 0.00500983, z: 0}
+    m_Extent: {x: 0.16970564, y: 0.25687635, z: 0}
